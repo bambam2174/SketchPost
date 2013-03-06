@@ -82,6 +82,7 @@ static inline double radians (double degrees);
 
 -(void)loadView {
     [super loadView];
+    [self.navigationController setNavigationBarHidden:YES];
     [self setupCustomView];
     [self setupCanvas];
     colorPicker = [self setupColorComposer];
@@ -89,13 +90,23 @@ static inline double radians (double degrees);
     [self setupNavBar];
     [self setupToolbar];
     //    self.view.layer.delegate = self;
+    UISwipeGestureRecognizer *swipeUpGest = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedUp:)];
+    swipeUpGest.numberOfTouchesRequired = 2;
+    swipeUpGest.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeUpGest];
+    
+    
+    UISwipeGestureRecognizer *swipeDownGest = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedDown:)];
+    swipeDownGest.numberOfTouchesRequired = 2;
+    swipeDownGest.direction = UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeDownGest];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     need2turn = NO;
-	// Do any additional setup after loading the view, typically from a nib.
+	
 }
 
 - (void)viewDidUnload
@@ -108,6 +119,7 @@ static inline double radians (double degrees);
     // e.g. self.myOutlet = nil;
 }
 
+/*
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -127,7 +139,7 @@ static inline double radians (double degrees);
 {
 	[super viewDidDisappear:animated];
 }
-
+*/
 
 
 
@@ -136,8 +148,14 @@ static inline double radians (double degrees);
     return (dictPaths.count);
 }
 
+-(void)swipedUp:(id)sender {
+    LOG_METHOD2
+}
 
 
+-(void)swipedDown:(id)sender {
+    LOG_METHOD2
+}
 
 #pragma mark - UI Elements
 
@@ -200,12 +218,14 @@ static inline double radians (double degrees);
 - (void)setupNavBar {
 //    self.navigationItem.title = @"Sketch it";
     _topToolBar = [[UIView alloc] initWithFrame:CGRectMake(/*self.view.bounds.size.width*/0, 0, self.view.bounds.size.width, 44)];
+    _topToolBar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:.3];
     [self.view addSubview:_topToolBar];
     UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     [btnCancel setTitle:@"X" forState:UIControlStateNormal];
     [btnCancel addTarget:self action:@selector(navBtnBack_Clicked:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *navBarButton = [[UIBarButtonItem alloc] initWithTitle:@"X" style:UIBarButtonItemStyleBordered target:self action:@selector(navBtnBack_Clicked:)];
-    self.navigationItem.leftBarButtonItem = navBarButton;
+    [_topToolBar addSubview:btnCancel];
+//    UIBarButtonItem *navBarButton = [[UIBarButtonItem alloc] initWithTitle:@"X" style:UIBarButtonItemStyleBordered target:self action:@selector(navBtnBack_Clicked:)];
+//    self.navigationItem.leftBarButtonItem = navBarButton;
     UISegmentedControl *toolButtons = [[UISegmentedControl alloc] init] ;//WithItems:[NSArray arrayWithObjects:@"Linie", @"Bild laden", @"A", nil]];
     
     [toolButtons insertSegmentWithImage:[UIImage imageNamed:@"icon_skatch_line.png"]  atIndex:0 animated:true];
@@ -216,11 +236,18 @@ static inline double radians (double degrees);
     toolButtons.frame = CGRectMake(73, 7, 180, 30);
     toolButtons.segmentedControlStyle = UISegmentedControlStyleBar;
     toolButtons.selectedSegmentIndex = 0;
-    [self.navigationController.navigationBar addSubview:toolButtons];
+//    [self.navigationController.navigationBar addSubview:toolButtons];
+    [_topToolBar addSubview:toolButtons];
     [toolButtons addTarget:self action:@selector(segmentControlEvent:) forControlEvents:UIControlEventValueChanged];
     
-    UIBarButtonItem *saveBarButton = [[UIBarButtonItem alloc] initWithTitle:@"SAVE" style:UIBarButtonItemStyleDone target:self action:@selector(navBtnSave_Clicked:)];
-    self.navigationItem.rightBarButtonItem = saveBarButton;
+    UIButton *btnSave = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [btnSave setTitle:@"Save" forState:UIControlStateNormal];
+    [btnSave addTarget:self action:@selector(navBtnSave_Clicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_topToolBar addSubview:btnSave];
+    btnSave.frame = CGRectOffset(btnSave.frame, self.view.bounds.size.width- btnSave.bounds.size.width, 0);
+    NSLog(@"btnSave %@, btnCancel %@", NSStringFromCGRect(btnSave.frame), NSStringFromCGRect(btnCancel.frame));
+//    UIBarButtonItem *saveBarButton = [[UIBarButtonItem alloc] initWithTitle:@"SAVE" style:UIBarButtonItemStyleDone target:self action:@selector(navBtnSave_Clicked:)];
+//    self.navigationItem.rightBarButtonItem = saveBarButton;
     
     /*UINavigationBar *navBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     DLog(@"Navbar frame %@", NSStringFromCGRect(navBar.frame));
@@ -273,7 +300,7 @@ static inline double radians (double degrees);
     tBar = [[UIToolbar alloc] init];
     tBar.barStyle = UIBarStyleDefault;
     [tBar sizeToFit];
-    tBar.frame = CGRectMake(0, self.view.frame.size.height-88, self.view.frame.size.width, 44);
+    tBar.frame = CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44);
     [self.view addSubview:tBar];
     
     
@@ -332,12 +359,12 @@ static inline double radians (double degrees);
     UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0,0,70,40)];
     _colorView.hidden = TRUE;
     
-    UIView *centerView = [[UIView alloc] initWithFrame:CGRectMake(85,2,150,40)];
+    UIView *centerView = [[UIView alloc] initWithFrame:CGRectMake((tBar.frame.size.width-150)/2,2,150,40)];
     [centerView addSubview:_widthSlider];
     [centerView addSubview:_colorView];
     [centerView setUserInteractionEnabled:TRUE];
     
-    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(0+265,0,50,40)];
+    UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(tBar.frame.size.width-70,0,70,40)];
     [rightView addSubview:_colorButton];
     [rightView addSubview:_widthButton];
     _colorView.hidden = TRUE;
