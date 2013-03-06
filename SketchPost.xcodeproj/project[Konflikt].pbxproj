@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4066CACE16E4E14F002DEEB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACD16E4E14F002DEEB7 /* UIKit.framework */; };
+		4066CAD016E4E14F002DEEB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACF16E4E14F002DEEB7 /* Foundation.framework */; };
+		4066CAD216E4E14F002DEEB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CAD116E4E14F002DEEB7 /* CoreGraphics.framework */; };
+		4066CAD816E4E14F002DEEB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4066CAD616E4E14F002DEEB7 /* InfoPlist.strings */; };
+		4066CADA16E4E14F002DEEB7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CAD916E4E14F002DEEB7 /* main.m */; };
+		4066CADE16E4E14F002DEEB7 /* BAMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CADD16E4E14F002DEEB7 /* BAMAppDelegate.m */; };
+		4066CAE016E4E14F002DEEB7 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CADF16E4E14F002DEEB7 /* Default.png */; };
+		4066CAE216E4E14F002DEEB7 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CAE116E4E14F002DEEB7 /* Default@2x.png */; };
+		4066CAE416E4E14F002DEEB7 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CAE316E4E14F002DEEB7 /* Default-568h@2x.png */; };
+		4066CAEC16E4E14F002DEEB7 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CAEB16E4E14F002DEEB7 /* SenTestingKit.framework */; };
+		4066CAED16E4E14F002DEEB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACD16E4E14F002DEEB7 /* UIKit.framework */; };
+		4066CAEE16E4E14F002DEEB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACF16E4E14F002DEEB7 /* Foundation.framework */; };
+		4066CAF616E4E14F002DEEB7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4066CAF416E4E14F002DEEB7 /* InfoPlist.strings */; };
+		4066CAF916E4E150002DEEB7 /* SketchPostTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CAF816E4E150002DEEB7 /* SketchPostTests.m */; };
+		4066CB0616E4E3FE002DEEB7 /* BAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CB0516E4E3FE002DEEB7 /* BAMViewController.m */; };
+		4066CB0816E4E478002DEEB7 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CB0716E4E478002DEEB7 /* FacebookSDK.framework */; };
+		4066CB0D16E4E62C002DEEB7 /* ADDRAWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CB0C16E4E62C002DEEB7 /* ADDRAWViewController.m */; };
+		4066CB1016E4E652002DEEB7 /* SADDRAWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CB0F16E4E652002DEEB7 /* SADDRAWViewController.m */; };
+		4066CB1116E4E91B002DEEB7 /* SADDRAWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CB0F16E4E652002DEEB7 /* SADDRAWViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		4066CB1216E4E92A002DEEB7 /* ADDRAWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CB0C16E4E62C002DEEB7 /* ADDRAWViewController.m */; };
+		4066CB1B16E4F155002DEEB7 /* icon_skatch_color@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CB1416E4F155002DEEB7 /* icon_skatch_color@2x.png */; };
+		4066CB1C16E4F155002DEEB7 /* icon_skatch_intensity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CB1516E4F155002DEEB7 /* icon_skatch_intensity@2x.png */; };
+		4066CB1D16E4F155002DEEB7 /* icon_skatch_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CB1616E4F155002DEEB7 /* icon_skatch_line@2x.png */; };
+		4066CB1E16E4F155002DEEB7 /* icon_skatch_pic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CB1716E4F155002DEEB7 /* icon_skatch_pic@2x.png */; };
+		4066CB1F16E4F155002DEEB7 /* icon_skatch_redo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CB1816E4F155002DEEB7 /* icon_skatch_redo@2x.png */; };
+		4066CB2016E4F155002DEEB7 /* icon_skatch_text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CB1916E4F155002DEEB7 /* icon_skatch_text@2x.png */; };
+		4066CB2116E4F155002DEEB7 /* icon_skatch_undo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4066CB1A16E4F155002DEEB7 /* icon_skatch_undo@2x.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4066CAEF16E4E14F002DEEB7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4066CAC016E4E14F002DEEB7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4066CAC816E4E14F002DEEB7;
+			remoteInfo = SketchPost;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4066CAC916E4E14F002DEEB7 /* SketchPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SketchPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4066CACD16E4E14F002DEEB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4066CACF16E4E14F002DEEB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4066CAD116E4E14F002DEEB7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4066CAD516E4E14F002DEEB7 /* SketchPost-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SketchPost-Info.plist"; sourceTree = "<group>"; };
+		4066CAD716E4E14F002DEEB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4066CAD916E4E14F002DEEB7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4066CADB16E4E14F002DEEB7 /* SketchPost-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SketchPost-Prefix.pch"; sourceTree = "<group>"; };
+		4066CADC16E4E14F002DEEB7 /* BAMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BAMAppDelegate.h; sourceTree = "<group>"; };
+		4066CADD16E4E14F002DEEB7 /* BAMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BAMAppDelegate.m; sourceTree = "<group>"; };
+		4066CADF16E4E14F002DEEB7 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4066CAE116E4E14F002DEEB7 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4066CAE316E4E14F002DEEB7 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4066CAEA16E4E14F002DEEB7 /* SketchPostTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SketchPostTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4066CAEB16E4E14F002DEEB7 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		4066CAF316E4E14F002DEEB7 /* SketchPostTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SketchPostTests-Info.plist"; sourceTree = "<group>"; };
+		4066CAF516E4E14F002DEEB7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4066CAF716E4E14F002DEEB7 /* SketchPostTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SketchPostTests.h; sourceTree = "<group>"; };
+		4066CAF816E4E150002DEEB7 /* SketchPostTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SketchPostTests.m; sourceTree = "<group>"; };
+		4066CB0416E4E3FE002DEEB7 /* BAMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAMViewController.h; sourceTree = "<group>"; };
+		4066CB0516E4E3FE002DEEB7 /* BAMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAMViewController.m; sourceTree = "<group>"; };
+		4066CB0716E4E478002DEEB7 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		4066CB0B16E4E62C002DEEB7 /* ADDRAWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDRAWViewController.h; sourceTree = "<group>"; };
+		4066CB0C16E4E62C002DEEB7 /* ADDRAWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDRAWViewController.m; sourceTree = "<group>"; };
+		4066CB0E16E4E652002DEEB7 /* SADDRAWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SADDRAWViewController.h; sourceTree = "<group>"; };
+		4066CB0F16E4E652002DEEB7 /* SADDRAWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SADDRAWViewController.m; sourceTree = "<group>"; };
+		4066CB1416E4F155002DEEB7 /* icon_skatch_color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_color@2x.png"; sourceTree = "<group>"; };
+		4066CB1516E4F155002DEEB7 /* icon_skatch_intensity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_intensity@2x.png"; sourceTree = "<group>"; };
+		4066CB1616E4F155002DEEB7 /* icon_skatch_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_line@2x.png"; sourceTree = "<group>"; };
+		4066CB1716E4F155002DEEB7 /* icon_skatch_pic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_pic@2x.png"; sourceTree = "<group>"; };
+		4066CB1816E4F155002DEEB7 /* icon_skatch_redo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_redo@2x.png"; sourceTree = "<group>"; };
+		4066CB1916E4F155002DEEB7 /* icon_skatch_text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_text@2x.png"; sourceTree = "<group>"; };
+		4066CB1A16E4F155002DEEB7 /* icon_skatch_undo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_undo@2x.png"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4066CAC616E4E14F002DEEB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4066CB0816E4E478002DEEB7 /* FacebookSDK.framework in Frameworks */,
+				4066CACE16E4E14F002DEEB7 /* UIKit.framework in Frameworks */,
+				4066CAD016E4E14F002DEEB7 /* Foundation.framework in Frameworks */,
+				4066CAD216E4E14F002DEEB7 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4066CAE616E4E14F002DEEB7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4066CAEC16E4E14F002DEEB7 /* SenTestingKit.framework in Frameworks */,
+				4066CAED16E4E14F002DEEB7 /* UIKit.framework in Frameworks */,
+				4066CAEE16E4E14F002DEEB7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4066CABE16E4E14F002DEEB7 = {
+			isa = PBXGroup;
+			children = (
+				4066CAD316E4E14F002DEEB7 /* SketchPost */,
+				4066CAF116E4E14F002DEEB7 /* SketchPostTests */,
+				4066CACC16E4E14F002DEEB7 /* Frameworks */,
+				4066CACA16E4E14F002DEEB7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4066CACA16E4E14F002DEEB7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4066CAC916E4E14F002DEEB7 /* SketchPost.app */,
+				4066CAEA16E4E14F002DEEB7 /* SketchPostTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4066CACC16E4E14F002DEEB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4066CB0716E4E478002DEEB7 /* FacebookSDK.framework */,
+				4066CACD16E4E14F002DEEB7 /* UIKit.framework */,
+				4066CACF16E4E14F002DEEB7 /* Foundation.framework */,
+				4066CAD116E4E14F002DEEB7 /* CoreGraphics.framework */,
+				4066CAEB16E4E14F002DEEB7 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4066CAD316E4E14F002DEEB7 /* SketchPost */ = {
+			isa = PBXGroup;
+			children = (
+				4066CB1316E4F148002DEEB7 /* Resx */,
+				4066CB0916E4E4B2002DEEB7 /* SketchController */,
+				4066CADC16E4E14F002DEEB7 /* BAMAppDelegate.h */,
+				4066CADD16E4E14F002DEEB7 /* BAMAppDelegate.m */,
+				4066CAD416E4E14F002DEEB7 /* Supporting Files */,
+				4066CB0416E4E3FE002DEEB7 /* BAMViewController.h */,
+				4066CB0516E4E3FE002DEEB7 /* BAMViewController.m */,
+			);
+			path = SketchPost;
+			sourceTree = "<group>";
+		};
+		4066CAD416E4E14F002DEEB7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4066CAD516E4E14F002DEEB7 /* SketchPost-Info.plist */,
+				4066CAD616E4E14F002DEEB7 /* InfoPlist.strings */,
+				4066CAD916E4E14F002DEEB7 /* main.m */,
+				4066CADB16E4E14F002DEEB7 /* SketchPost-Prefix.pch */,
+				4066CADF16E4E14F002DEEB7 /* Default.png */,
+				4066CAE116E4E14F002DEEB7 /* Default@2x.png */,
+				4066CAE316E4E14F002DEEB7 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4066CAF116E4E14F002DEEB7 /* SketchPostTests */ = {
+			isa = PBXGroup;
+			children = (
+				4066CAF716E4E14F002DEEB7 /* SketchPostTests.h */,
+				4066CAF816E4E150002DEEB7 /* SketchPostTests.m */,
+				4066CAF216E4E14F002DEEB7 /* Supporting Files */,
+			);
+			path = SketchPostTests;
+			sourceTree = "<group>";
+		};
+		4066CAF216E4E14F002DEEB7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4066CAF316E4E14F002DEEB7 /* SketchPostTests-Info.plist */,
+				4066CAF416E4E14F002DEEB7 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4066CB0916E4E4B2002DEEB7 /* SketchController */ = {
+			isa = PBXGroup;
+			children = (
+				4066CB0E16E4E652002DEEB7 /* SADDRAWViewController.h */,
+				4066CB0F16E4E652002DEEB7 /* SADDRAWViewController.m */,
+				4066CB0B16E4E62C002DEEB7 /* ADDRAWViewController.h */,
+				4066CB0C16E4E62C002DEEB7 /* ADDRAWViewController.m */,
+			);
+			name = SketchController;
+			sourceTree = "<group>";
+		};
+		4066CB1316E4F148002DEEB7 /* Resx */ = {
+			isa = PBXGroup;
+			children = (
+				4066CB1416E4F155002DEEB7 /* icon_skatch_color@2x.png */,
+				4066CB1516E4F155002DEEB7 /* icon_skatch_intensity@2x.png */,
+				4066CB1616E4F155002DEEB7 /* icon_skatch_line@2x.png */,
+				4066CB1716E4F155002DEEB7 /* icon_skatch_pic@2x.png */,
+				4066CB1816E4F155002DEEB7 /* icon_skatch_redo@2x.png */,
+				4066CB1916E4F155002DEEB7 /* icon_skatch_text@2x.png */,
+				4066CB1A16E4F155002DEEB7 /* icon_skatch_undo@2x.png */,
+			);
+			name = Resx;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4066CAC816E4E14F002DEEB7 /* SketchPost */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4066CAFC16E4E150002DEEB7 /* Build configuration list for PBXNativeTarget "SketchPost" */;
+			buildPhases = (
+				4066CAC516E4E14F002DEEB7 /* Sources */,
+				4066CAC616E4E14F002DEEB7 /* Frameworks */,
+				4066CAC716E4E14F002DEEB7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SketchPost;
+			productName = SketchPost;
+			productReference = 4066CAC916E4E14F002DEEB7 /* SketchPost.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4066CAE916E4E14F002DEEB7 /* SketchPostTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4066CAFF16E4E150002DEEB7 /* Build configuration list for PBXNativeTarget "SketchPostTests" */;
+			buildPhases = (
+				4066CAE516E4E14F002DEEB7 /* Sources */,
+				4066CAE616E4E14F002DEEB7 /* Frameworks */,
+				4066CAE716E4E14F002DEEB7 /* Resources */,
+				4066CAE816E4E14F002DEEB7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4066CAF016E4E14F002DEEB7 /* PBXTargetDependency */,
+			);
+			name = SketchPostTests;
+			productName = SketchPostTests;
+			productReference = 4066CAEA16E4E14F002DEEB7 /* SketchPostTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4066CAC016E4E14F002DEEB7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BAM;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "adrodev GmbH";
+			};
+			buildConfigurationList = 4066CAC316E4E14F002DEEB7 /* Build configuration list for PBXProject "SketchPost" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4066CABE16E4E14F002DEEB7;
+			productRefGroup = 4066CACA16E4E14F002DEEB7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4066CAC816E4E14F002DEEB7 /* SketchPost */,
+				4066CAE916E4E14F002DEEB7 /* SketchPostTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4066CAC716E4E14F002DEEB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4066CAD816E4E14F002DEEB7 /* InfoPlist.strings in Resources */,
+				4066CAE016E4E14F002DEEB7 /* Default.png in Resources */,
+				4066CAE216E4E14F002DEEB7 /* Default@2x.png in Resources */,
+				4066CAE416E4E14F002DEEB7 /* Default-568h@2x.png in Resources */,
+				4066CB1B16E4F155002DEEB7 /* icon_skatch_color@2x.png in Resources */,
+				4066CB1C16E4F155002DEEB7 /* icon_skatch_intensity@2x.png in Resources */,
+				4066CB1D16E4F155002DEEB7 /* icon_skatch_line@2x.png in Resources */,
+				4066CB1E16E4F155002DEEB7 /* icon_skatch_pic@2x.png in Resources */,
+				4066CB1F16E4F155002DEEB7 /* icon_skatch_redo@2x.png in Resources */,
+				4066CB2016E4F155002DEEB7 /* icon_skatch_text@2x.png in Resources */,
+				4066CB2116E4F155002DEEB7 /* icon_skatch_undo@2x.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4066CAE716E4E14F002DEEB7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4066CAF616E4E14F002DEEB7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4066CAE816E4E14F002DEEB7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4066CAC516E4E14F002DEEB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4066CB1216E4E92A002DEEB7 /* ADDRAWViewController.m in Sources */,
+				4066CB1116E4E91B002DEEB7 /* SADDRAWViewController.m in Sources */,
+				4066CADA16E4E14F002DEEB7 /* main.m in Sources */,
+				4066CADE16E4E14F002DEEB7 /* BAMAppDelegate.m in Sources */,
+				4066CB0616E4E3FE002DEEB7 /* BAMViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4066CAE516E4E14F002DEEB7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4066CAF916E4E150002DEEB7 /* SketchPostTests.m in Sources */,
+				4066CB0D16E4E62C002DEEB7 /* ADDRAWViewController.m in Sources */,
+				4066CB1016E4E652002DEEB7 /* SADDRAWViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4066CAF016E4E14F002DEEB7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4066CAC816E4E14F002DEEB7 /* SketchPost */;
+			targetProxy = 4066CAEF16E4E14F002DEEB7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4066CAD616E4E14F002DEEB7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4066CAD716E4E14F002DEEB7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4066CAF416E4E14F002DEEB7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4066CAF516E4E14F002DEEB7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4066CAFA16E4E150002DEEB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4066CAFB16E4E150002DEEB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4066CAFD16E4E150002DEEB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SketchPost/SketchPost-Prefix.pch";
+				INFOPLIST_FILE = "SketchPost/SketchPost-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4066CAFE16E4E150002DEEB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SketchPost/SketchPost-Prefix.pch";
+				INFOPLIST_FILE = "SketchPost/SketchPost-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A\"",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		4066CB0016E4E150002DEEB7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SketchPost.app/SketchPost";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SketchPost/SketchPost-Prefix.pch";
+				INFOPLIST_FILE = "SketchPostTests/SketchPostTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		4066CB0116E4E150002DEEB7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SketchPost.app/SketchPost";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SketchPost/SketchPost-Prefix.pch";
+				INFOPLIST_FILE = "SketchPostTests/SketchPostTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4066CAC316E4E14F002DEEB7 /* Build configuration list for PBXProject "SketchPost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4066CAFA16E4E150002DEEB7 /* Debug */,
+				4066CAFB16E4E150002DEEB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4066CAFC16E4E150002DEEB7 /* Build configuration list for PBXNativeTarget "SketchPost" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4066CAFD16E4E150002DEEB7 /* Debug */,
+				4066CAFE16E4E150002DEEB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		4066CAFF16E4E150002DEEB7 /* Build configuration list for PBXNativeTarget "SketchPostTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4066CB0016E4E150002DEEB7 /* Debug */,
+				4066CB0116E4E150002DEEB7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4066CAC016E4E14F002DEEB7 /* Project object */;
+}

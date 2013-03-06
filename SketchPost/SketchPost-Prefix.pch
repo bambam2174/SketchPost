@@ -1,0 +1,24 @@
+//
+// Prefix header for all source files of the 'SketchPost' target in the 'SketchPost' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+#define SKLog(...)          NSLog(__VA_ARGS__)
+#define DLog(...)           NSLog(__VA_ARGS__)
+#define LOG_METHOD          NSLog(@"[%@ %@]\n", NSStringFromClass([self class]), NSStringFromSelector(_cmd));
+
+#define LOG_METHOD2         NSLog(@"%s", __PRETTY_FUNCTION__);
+
+#define FB_APP_ID           @"217928065015103"
+
+#define CLEAR_COLOR         [UIColor clearColor]
