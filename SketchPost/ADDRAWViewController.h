@@ -56,6 +56,9 @@
     
     UIAlertView *cancelAlertView;
     UIView *_topToolBar;
+    
+    BOOL _topToolBarVisible;
+    BOOL _bottomToolBarVisible;
 }
 
 

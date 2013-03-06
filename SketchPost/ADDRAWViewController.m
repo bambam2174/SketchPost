@@ -7,7 +7,7 @@
 //
 
 #define FONT_SIZE 12
-#define KORREKTURFAKTORY 1.13
+#define KORREKTURFAKTORY 1
 
 #import "ADDRAWViewController.h"
 
@@ -72,6 +72,8 @@ static inline double radians (double degrees);
         overlayFont = nil;
         canvas2Top = NO;
         vOffset = 0.0;
+        _topToolBarVisible = NO;
+        _bottomToolBarVisible = NO;
     }
     return self;
 }
@@ -150,6 +152,17 @@ static inline double radians (double degrees);
 
 -(void)swipedUp:(id)sender {
     LOG_METHOD2
+    if (_topToolBarVisible) {
+        _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
+        tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
+        _topToolBarVisible = NO;
+        _bottomToolBarVisible = NO;
+    } else  {
+        _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
+        tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
+        _topToolBarVisible = YES;
+        _bottomToolBarVisible = YES;
+    }
 }
 
 
@@ -217,7 +230,7 @@ static inline double radians (double degrees);
 
 - (void)setupNavBar {
 //    self.navigationItem.title = @"Sketch it";
-    _topToolBar = [[UIView alloc] initWithFrame:CGRectMake(/*self.view.bounds.size.width*/0, 0, self.view.bounds.size.width, 44)];
+    _topToolBar = [[UIView alloc] initWithFrame:CGRectMake(/*self.view.bounds.size.width*/0, -44, self.view.bounds.size.width, 44)];
     _topToolBar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:.3];
     [self.view addSubview:_topToolBar];
     UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -300,7 +313,7 @@ static inline double radians (double degrees);
     tBar = [[UIToolbar alloc] init];
     tBar.barStyle = UIBarStyleDefault;
     [tBar sizeToFit];
-    tBar.frame = CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44);
+    tBar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44);
     [self.view addSubview:tBar];
     
     
@@ -452,7 +465,7 @@ static inline double radians (double degrees);
 }
 
 -(void)setupCanvas {
-    tmpImgVw = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,372)];
+    tmpImgVw = [[UIImageView alloc] initWithFrame:self.view.bounds];
     [tmpImgVw setBackgroundColor:[UIColor clearColor]];
     //[tmpImgVw setContentMode:UIViewContentModeScaleAspectFit];
     [self.view addSubview:tmpImgVw];
@@ -668,9 +681,9 @@ static inline double radians (double degrees);
     [self _drawBackgroundImage];        
 
     //[tmpImgVw setImage:bild];
-    UIGraphicsBeginImageContext(self.view.frame.size);
+    UIGraphicsBeginImageContext(tmpImgVw.frame.size);
 
-    [tmpImgVw.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [tmpImgVw.image drawInRect:CGRectMake(0, 0, tmpImgVw.frame.size.width, tmpImgVw.frame.size.height)];
     for (int i = 0; i < pc; i++) {
         //            p = (CGMutablePathRef)[tmpPaths objectAtIndex:i];
         NSArray *pObj = [dictPaths objectForKey:[NSString stringWithFormat:@"%d", i]];
@@ -819,12 +832,12 @@ static inline double radians (double degrees);
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
-    CGPoint p = [touch locationInView:self.view];
+    CGPoint p = [touch locationInView:tmpImgVw];
     _lblTopAnzeige.text = [NSString stringWithFormat:@"%d", [touch tapCount]];
     mouseSwiped = NO;
     lastPoint = p;
 //    lastPoint.y -= 15;
-    lastPoint.y *= KORREKTURFAKTORY;
+//    lastPoint.y *= KORREKTURFAKTORY;
     path = CGPathCreateMutable();
 }
 
@@ -833,13 +846,13 @@ static inline double radians (double degrees);
     
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
-    CGPoint currentPoint = [touch locationInView:self.view];
+    CGPoint currentPoint = [touch locationInView:tmpImgVw];
     _lblTopAnzeige.text = [NSString stringWithFormat:@"%.0f/%.0f", currentPoint.x, currentPoint.y];
 //    currentPoint.y -= 15;
-    currentPoint.y *= KORREKTURFAKTORY;
+//    currentPoint.y *= KORREKTURFAKTORY;
     if (!drawText) {
-        UIGraphicsBeginImageContext(self.view.frame.size);
-        [tmpImgVw.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+        UIGraphicsBeginImageContext(tmpImgVw.frame.size);
+        [tmpImgVw.image drawInRect:CGRectMake(0, 0, tmpImgVw.frame.size.width, tmpImgVw.frame.size.height)];
         CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
         CGContextSetLineWidth(UIGraphicsGetCurrentContext(), _radius);
         CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, alpha);
@@ -878,8 +891,8 @@ static inline double radians (double degrees);
     
     if (!drawText) {
         if(!mouseSwiped) {
-            UIGraphicsBeginImageContext(self.view.frame.size);
-            [tmpImgVw.image drawInRect:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+            UIGraphicsBeginImageContext(tmpImgVw.frame.size);
+            [tmpImgVw.image drawInRect:CGRectMake(0, 0, tmpImgVw.frame.size.width, tmpImgVw.frame.size.height)];
             CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
             CGContextSetLineWidth(UIGraphicsGetCurrentContext(), _radius);
             CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), red, green, blue, alpha);
