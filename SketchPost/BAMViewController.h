@@ -11,8 +11,20 @@
 
 @class ADDRAWViewController;
 
+@interface BAMView  : UIView {
+    UIImageView *_imvProfile;
+    UILabel *_lblStuff;
+}
+
+@end
+
+//################################################################################################################################
+//################################################################################################################################
+
 @interface BAMViewController : UIViewController {
     ADDRAWViewController *m_sketchController;
+    BAMView *_otherView;
+    BOOL _isOtherViewVisible;
 }
 
 @end

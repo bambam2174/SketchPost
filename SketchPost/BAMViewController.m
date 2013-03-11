@@ -9,7 +9,48 @@
 #import "BAMViewController.h"
 #import "ADDRAWViewController.h"
 
-@interface BAMViewController ()
+@interface BAMView (private)
+
+@end
+
+@implementation BAMView
+
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        
+        _imvProfile = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 75, 75)];
+        _imvProfile.backgroundColor = [UIColor clearColor];
+        [self addSubview:_imvProfile];
+        
+        _lblStuff = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 200, 25)];
+        _lblStuff.backgroundColor = [UIColor clearColor];
+        [self addSubview:_lblStuff];
+        
+        _lblStuff.text = @"HalloWelt HelloWorld Merhaba Dünya";
+        self.backgroundColor = [UIColor redColor];
+        
+    }
+    return self;
+}
+
+/*
+ // Only override drawRect: if you perform custom drawing.
+ // An empty implementation adversely affects performance during animation.
+ - (void)drawRect:(CGRect)rect
+ {
+ // Drawing code
+ }
+ */
+
+@end
+
+//################################################################################################################################
+//################################################################################################################################
+
+@interface BAMViewController (private)
 
 @end
 
@@ -40,6 +81,41 @@
     m_sketchController.view.frame = self.view.bounds;
     [self.navigationController.navigationBar addSubview:[m_sketchController.navigationController.navigationBar.subviews objectAtIndex:0]];
     [self.view addSubview:m_sketchController.view];
+    [self setupOtherView];
+}
+
+-(void)viewDidAppear:(BOOL)animated {
+    [self flipToOtherView:nil];
+}
+
+-(void)flipToOtherView:(id)sender {
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromRight forView:self.view cache:YES];
+    
+    [self.view addSubview:_otherView];
+    [UIView commitAnimations];
+}
+
+-(void)flipBack:(id)sender {
+    if (_otherView) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:1.0];
+        [UIView setAnimationTransition:UIViewAnimationTransitionFlipFromLeft forView:self.view cache:YES];
+        [_otherView removeFromSuperview];
+        _isOtherViewVisible = NO;
+        [UIView commitAnimations];
+    }
+    
+}
+
+-(void)setupOtherView {
+    _otherView = [[BAMView alloc] initWithFrame:self.view.frame];
+    UISwipeGestureRecognizer *swipeBack = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeBack_Gest:)];
+    swipeBack.numberOfTouchesRequired = 1;
+    swipeBack.direction = UISwipeGestureRecognizerDirectionLeft;
+    [_otherView addGestureRecognizer:swipeBack];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,5 +128,8 @@
     [FBSession.activeSession closeAndClearTokenInformation];
 }
 
+-(void)swipeBack_Gest:(id)sender {
+    [self flipBack:sender];
+}
 
 @end
