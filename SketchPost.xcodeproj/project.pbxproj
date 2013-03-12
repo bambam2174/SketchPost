@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4046B45C16EF535C00134227 /* NSDictionary+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046B45B16EF535C00134227 /* NSDictionary+Plist.m */; };
 		4066CACE16E4E14F002DEEB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACD16E4E14F002DEEB7 /* UIKit.framework */; };
 		4066CAD016E4E14F002DEEB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACF16E4E14F002DEEB7 /* Foundation.framework */; };
 		4066CAD216E4E14F002DEEB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CAD116E4E14F002DEEB7 /* CoreGraphics.framework */; };
@@ -53,6 +54,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4046B45A16EF535C00134227 /* NSDictionary+Plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Plist.h"; sourceTree = "<group>"; };
+		4046B45B16EF535C00134227 /* NSDictionary+Plist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Plist.m"; sourceTree = "<group>"; };
 		4066CAC916E4E14F002DEEB7 /* SketchPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SketchPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4066CACD16E4E14F002DEEB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4066CACF16E4E14F002DEEB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -167,6 +170,8 @@
 		4066CAD316E4E14F002DEEB7 /* SketchPost */ = {
 			isa = PBXGroup;
 			children = (
+				4046B45A16EF535C00134227 /* NSDictionary+Plist.h */,
+				4046B45B16EF535C00134227 /* NSDictionary+Plist.m */,
 				408A333916E652D800367735 /* Resx */,
 				408A333816E652B500367735 /* Classes */,
 				4066CADC16E4E14F002DEEB7 /* BAMAppDelegate.h */,
@@ -366,6 +371,7 @@
 				4066CB5B16E74A68002DEEB7 /* BAMFacebookManager.m in Sources */,
 				4066CB7116E75429002DEEB7 /* BAMLoginController.m in Sources */,
 				4066CB7416E75994002DEEB7 /* ADSBorderedTextfield.m in Sources */,
+				4046B45C16EF535C00134227 /* NSDictionary+Plist.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

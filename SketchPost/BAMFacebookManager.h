@@ -9,6 +9,38 @@
 #import <Foundation/Foundation.h>
 #import <FacebookSDK/FacebookSDK.h>
 
-@interface BAMFacebookManager : NSObject
+/*
+@protocol BAMUser <FBGraphUser>
+
+@property (readonly, nonatomic, getter = favoriteTeams) NSArray *favoriteTeams;
+
+@end
+*/
+
+@protocol BAMFacebookManagerDelegate <NSObject>
+
+-(void)userDetailsFetched:(NSDictionary<FBGraphUser> *)user;
+
+@end
+
+@interface BAMFacebookManager : NSObject <FBFriendPickerDelegate /*, BAMUser*/> {
+    NSDictionary<FBGraphUser> *_user;
+    FBFriendPickerViewController *_friendsPickerController;
+}
+
+@property (unsafe_unretained) id<BAMFacebookManagerDelegate> delegate;
+@property (readonly) FBFriendPickerViewController *friendsPickerController;
+@property (strong, nonatomic) NSArray *selectedFriends;
+
+/*@property (strong, nonatomic) NSDictionary<BAMUser> *bamUser;*/
+
++(BAMFacebookManager *)shared;
+
+-(void)getUserDetails;
+
+-(NSString *)getUserBio;
+-(NSArray *)getUserEducation;
+-(NSArray *)getFavouriteAthletes;
+-(NSArray *)getFavouriteTeams;
 
 @end

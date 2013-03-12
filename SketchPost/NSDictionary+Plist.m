@@ -57,7 +57,7 @@
         maxIndexKey = ([[plistKeys objectAtIndex:j] integerValue]>maxIndexKey)?[[plistKeys objectAtIndex:j] integerValue]:maxIndexKey;
     }
     maxIndexKey++;
-    DLOG(@"maxIndexKey %d", maxIndexKey);
+    NSLog(@"maxIndexKey %d", maxIndexKey);
     NSArray *keys = [self allKeys];
     NSString *key;
     NSString *value;
@@ -104,7 +104,7 @@
         [filemanager removeItemAtPath:szPlistPath error:&error];
     }
     if (error) {
-        DLOG(@"Error removing file %@\n%@", filename, [error description]);
+        NSLog(@"Error removing file %@\n%@", filename, [error description]);
     }
 }
 
@@ -134,7 +134,7 @@
     NSArray *dir = [filemanager contentsOfDirectoryAtPath:documentPath error:&error];
     
     if ([[NSString stringWithFormat:@"%@", dir] rangeOfString:filename].location == NSNotFound) {
-        DLOG(@"%@ noch nicht vorhanden", filename);
+        NSLog(@"%@ noch nicht vorhanden", filename);
         erg = NO;
     } else
         erg = YES;

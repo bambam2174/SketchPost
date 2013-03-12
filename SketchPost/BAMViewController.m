@@ -8,6 +8,7 @@
 
 #import "BAMViewController.h"
 #import "ADDRAWViewController.h"
+#import "NSDictionary+Plist.h"
 
 @interface BAMView (private)
 
@@ -15,15 +16,39 @@
 
 @implementation BAMView
 
+- (void)addButtonStart
+{
+    _btnStart = [[UIButton alloc] initWithFrame:CGRectMake(10, self.frame.size.height-30, 100, 30)];
+    _btnStart.layer.cornerRadius = 10.0f;
+    [_btnStart setBackgroundColor:[UIColor blackColor]];
+    [_btnStart setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_btnStart setTitleColor:[UIColor yellowColor] forState:UIControlStateHighlighted];
+    [_btnStart setTitle:@"Klick" forState:UIControlStateNormal];
+    
+    [self addSubview:_btnStart];
+}
+
+- (void)addButtonFriends
+{
+    _btnFriends = [[UIButton alloc] initWithFrame:CGRectMake(120, self.frame.size.height-30, 100, 30)];
+    _btnFriends.layer.cornerRadius = 10.0f;
+    [_btnFriends setBackgroundColor:[UIColor blackColor]];
+    [_btnFriends setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_btnFriends setTitleColor:[UIColor yellowColor] forState:UIControlStateHighlighted];
+    [_btnFriends setTitle:@"Friends" forState:UIControlStateNormal];
+    
+    [self addSubview:_btnFriends];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
         
-        _imvProfile = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 75, 75)];
-        _imvProfile.backgroundColor = [UIColor clearColor];
-        [self addSubview:_imvProfile];
+        _profilePictureView = [[FBProfilePictureView alloc] initWithFrame:CGRectMake(10, 10, 75, 75)];
+        _profilePictureView.backgroundColor = [UIColor clearColor];
+        [self addSubview:_profilePictureView];
         
         _lblStuff = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 200, 25)];
         _lblStuff.backgroundColor = [UIColor clearColor];
@@ -32,6 +57,8 @@
         _lblStuff.text = @"HalloWelt HelloWorld Merhaba Dünya";
         self.backgroundColor = [UIColor redColor];
         
+        [self addButtonStart];
+        [self addButtonFriends];
     }
     return self;
 }
@@ -45,10 +72,33 @@
  }
  */
 
+#pragma mark - Public Methods
+
+-(void)addButtonStartTarget:(id)target action:(SEL)selector {
+    [_btnStart addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)addButtonFriendTarget:(id)target action:(SEL)selector {
+    [_btnFriends addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
+}
+
+-(void)setUser:(NSDictionary<FBGraphUser> *)user {
+    _user = user;
+//    _lblStuff.text = user.name;
+    _profilePictureView.profileID = user.id;
+    _lblStuff.text = user.name;
+    
+}
+
 @end
 
-//################################################################################################################################
-//################################################################################################################################
+#pragma mark -
+/*
+################################################################################################################################
+################################################################################################################################
+*/
+#pragma mark -
+
 
 @interface BAMViewController (private)
 
@@ -115,7 +165,8 @@
     swipeBack.numberOfTouchesRequired = 1;
     swipeBack.direction = UISwipeGestureRecognizerDirectionLeft;
     [_otherView addGestureRecognizer:swipeBack];
-    
+    [_otherView addButtonStartTarget:self action:@selector(btnStart_Clicked:)];
+    [_otherView addButtonFriendTarget:self action:@selector(btnFriends_Clicked:)];
 }
 
 - (void)didReceiveMemoryWarning
@@ -130,6 +181,29 @@
 
 -(void)swipeBack_Gest:(id)sender {
     [self flipBack:sender];
+}
+
+-(void)btnStart_Clicked:(id)sender {
+    _mgr = [BAMFacebookManager shared];
+    _mgr.delegate = self;
+    [_mgr getUserDetails];
+}
+
+-(void)btnFriends_Clicked:(id)sender {
+    _friendsPicker = [[BAMFacebookManager shared] friendsPickerController];
+//    [self.navigationController pushViewController:_friendsPicker animated:YES];
+    [self presentViewController:_friendsPicker animated:YES completion:^{
+        NSLog(@"FINISHED");
+    }];
+}
+
+#pragma mark - BAMFacebookManagerDelegate
+
+-(void)userDetailsFetched:(NSDictionary<FBGraphUser> *)user {
+    [_otherView setUser:user];
+//    [user writeToPlistWithFilename:@"user_atomically.plist"];
+
+    
 }
 
 @end

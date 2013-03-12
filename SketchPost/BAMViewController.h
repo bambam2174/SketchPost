@@ -8,23 +8,43 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import "BAMFacebookManager.h"
 
 @class ADDRAWViewController;
 
-@interface BAMView  : UIView {
-    UIImageView *_imvProfile;
-    UILabel *_lblStuff;
-}
+@protocol BAMViewDelegate <NSObject>
+
 
 @end
 
-//################################################################################################################################
-//################################################################################################################################
+@interface BAMView  : UIView  {
+    
+    FBProfilePictureView *_profilePictureView;
+    UILabel *_lblStuff;
+    UIButton *_btnStart;
+    UIButton *_btnFriends;
+}
 
-@interface BAMViewController : UIViewController {
+@property (strong, nonatomic) NSDictionary<FBGraphUser> *user;
+
+-(void)addButtonStartTarget:(id)target action:(SEL)selector;
+-(void)addButtonFriendTarget:(id)target action:(SEL)selector;
+
+@end
+
+#pragma mark -
+/*
+################################################################################################################################
+################################################################################################################################
+*/
+#pragma mark -
+
+@interface BAMViewController : UIViewController<BAMFacebookManagerDelegate> {
     ADDRAWViewController *m_sketchController;
     BAMView *_otherView;
     BOOL _isOtherViewVisible;
+    BAMFacebookManager *_mgr;
+    FBFriendPickerViewController *_friendsPicker;
 }
 
 @end

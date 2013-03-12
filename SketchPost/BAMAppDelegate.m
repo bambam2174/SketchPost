@@ -11,6 +11,8 @@
 #import "ADDRAWViewController.h"
 #import "BAMLoginController.h"
 
+NSString *const SCSessionStateChangedNotification = @"de.adrodev.kilinc.sketchpost:SCSessionStateChangedNotification";
+
 @implementation BAMAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -27,6 +29,7 @@
     } else {
         [self showLoginView];
     }
+    
     return YES;
 }
 
@@ -90,6 +93,7 @@
             break;
     }
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:SCSessionStateChangedNotification object:session];
     if (error) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error" message:error.localizedDescription delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alertView show];
@@ -117,6 +121,14 @@
         [ctrl loginFailed];
     }
     
+}
+
+-(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
+    NSLog(@"token extended");
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
+    [defaults setObject:expiresAt forKey:@"FBExpirationDateKey"];
+    [defaults synchronize];
 }
 
 @end
