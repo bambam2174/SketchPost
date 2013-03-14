@@ -100,7 +100,7 @@ static inline double radians (double degrees);
     
     UISwipeGestureRecognizer *swipeDownGest = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedDown:)];
     swipeDownGest.numberOfTouchesRequired = 2;
-    swipeDownGest.direction = UISwipeGestureRecognizerDirectionUp;
+    swipeDownGest.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDownGest];
 }
 
@@ -152,17 +152,20 @@ static inline double radians (double degrees);
 
 -(void)swipedUp:(id)sender {
     LOG_METHOD2
-    if (_topToolBarVisible) {
-        _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
-        tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
-        _topToolBarVisible = NO;
-        _bottomToolBarVisible = NO;
-    } else  {
-        _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
-        tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
-        _topToolBarVisible = YES;
-        _bottomToolBarVisible = YES;
-    }
+    [UIView animateWithDuration:0.3 animations:^{
+        if (_topToolBarVisible) {
+            _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
+            tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
+            _topToolBarVisible = NO;
+            _bottomToolBarVisible = NO;
+        } else  {
+            _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
+            tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
+            _topToolBarVisible = YES;
+            _bottomToolBarVisible = YES;
+        }
+    }];
+    
 }
 
 
@@ -832,6 +835,7 @@ static inline double radians (double degrees);
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
+    NSLog(@"touch.tapCount %d", touch.tapCount);
     CGPoint p = [touch locationInView:tmpImgVw];
     _lblTopAnzeige.text = [NSString stringWithFormat:@"%d", [touch tapCount]];
     mouseSwiped = NO;
@@ -846,6 +850,9 @@ static inline double radians (double degrees);
     
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
+    NSLog(@"touch.tapCount %d", touch.tapCount);
+    if(touch.tapCount > 1)
+        return;
     CGPoint currentPoint = [touch locationInView:tmpImgVw];
     _lblTopAnzeige.text = [NSString stringWithFormat:@"%.0f/%.0f", currentPoint.x, currentPoint.y];
 //    currentPoint.y -= 15;
