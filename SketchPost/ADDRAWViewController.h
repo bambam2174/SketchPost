@@ -73,5 +73,5 @@
 @optional
 - (void) OnSketchADDRAWViewControllerCancel:(ADDRAWViewController*)ctrl;
 - (void) OnSketchADDRAWViewController:(ADDRAWViewController *)ctrl saveImage:(UIImage*)image;
-
+-(void)swipeGesture:(UISwipeGestureRecognizerDirection)direction;
 @end

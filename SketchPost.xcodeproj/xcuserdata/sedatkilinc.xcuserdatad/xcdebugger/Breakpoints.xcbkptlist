@@ -47,11 +47,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "384783252.688586"
+         timestampString = "384995531.633505"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
+         startingLineNumber = "58"
+         endingLineNumber = "58"
          landmarkName = "-initWithFrame:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "384794273.553262"
+         timestampString = "384995531.633505"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "193"
-         endingLineNumber = "193"
+         startingLineNumber = "202"
+         endingLineNumber = "202"
          landmarkName = "-btnFriends_Clicked:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "384974809.163943"
+         timestampString = "384995531.633505"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "183"
-         endingLineNumber = "183"
+         startingLineNumber = "188"
+         endingLineNumber = "188"
          landmarkName = "-swipeBack_Gest:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -125,11 +125,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "384975293.287076"
+         timestampString = "384995531.633505"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "173"
-         endingLineNumber = "173"
+         startingLineNumber = "174"
+         endingLineNumber = "174"
          landmarkName = "-swipedDown:"
          landmarkType = "5">
       </FileBreakpoint>

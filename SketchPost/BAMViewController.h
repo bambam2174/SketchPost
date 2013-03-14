@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
 #import "BAMFacebookManager.h"
+#import "ADDRAWViewController.h"
 
 @class ADDRAWViewController;
 
@@ -39,7 +40,7 @@
 */
 #pragma mark -
 
-@interface BAMViewController : UIViewController<BAMFacebookManagerDelegate> {
+@interface BAMViewController : UIViewController<BAMFacebookManagerDelegate, ADDRAWViewControllerDelegate> {
     ADDRAWViewController *m_sketchController;
     BAMView *_otherView;
     BOOL _isOtherViewVisible;

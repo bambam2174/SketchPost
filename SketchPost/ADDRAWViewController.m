@@ -166,11 +166,13 @@ static inline double radians (double degrees);
         }
     }];
     
+    [_delegate swipeGesture:UISwipeGestureRecognizerDirectionUp];
 }
 
 
 -(void)swipedDown:(id)sender {
     LOG_METHOD2
+    [_delegate swipeGesture:UISwipeGestureRecognizerDirectionDown];
 }
 
 #pragma mark - UI Elements
