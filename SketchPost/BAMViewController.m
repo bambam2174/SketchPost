@@ -127,7 +127,7 @@
     self.view.backgroundColor = [UIColor clearColor];
     
     m_sketchController = [[ADDRAWViewController alloc] init];
-    m_sketchController.view.frame = self.view.bounds;
+    m_sketchController.view.frame = [UIScreen mainScreen].bounds ;
     m_sketchController.delegate = self;
 //    [self.navigationController.navigationBar addSubview:[m_sketchController.navigationController.navigationBar.subviews objectAtIndex:0]];
     
@@ -165,7 +165,7 @@
 }
 
 -(void)setupOtherView {
-    _otherView = [[BAMView alloc] initWithFrame:self.view.frame];
+    _otherView = [[BAMView alloc] initWithFrame:self.view.bounds];
     UISwipeGestureRecognizer *swipeBack = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeBack_Gest:)];
     swipeBack.numberOfTouchesRequired = 1;
     swipeBack.direction = UISwipeGestureRecognizerDirectionLeft;

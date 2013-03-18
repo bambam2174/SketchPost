@@ -87,7 +87,7 @@ static inline double radians (double degrees);
     [self.navigationController setNavigationBarHidden:YES];
     [self setupCustomView];
     [self setupCanvas];
-    colorPicker = [self setupColorComposer];
+//    colorPicker = [self setupColorComposer];
     [self.view addSubview:colorPicker];
     [self setupNavBar];
     [self setupToolbar];
@@ -318,7 +318,7 @@ static inline double radians (double degrees);
     tBar = [[UIToolbar alloc] init];
     tBar.barStyle = UIBarStyleDefault;
     [tBar sizeToFit];
-    tBar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44);
+    tBar.frame = CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44);
     [self.view addSubview:tBar];
     
     
@@ -434,7 +434,7 @@ static inline double radians (double degrees);
     
     [tBar setItems:[NSArray arrayWithObjects:btnUndo, btnRedo, btnSlider, barBtnColor, nil]];
      */
-
+    NSLog(@"tBar.frame %@", NSStringFromCGRect(tBar.frame));
     return;
     
     
