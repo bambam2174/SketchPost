@@ -111,6 +111,11 @@ static inline double radians (double degrees);
 	
 }
 
+-(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self.view becomeFirstResponder];
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -155,12 +160,12 @@ static inline double radians (double degrees);
     [UIView animateWithDuration:0.3 animations:^{
         if (_topToolBarVisible) {
             _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
-            tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
+            tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
             _topToolBarVisible = NO;
             _bottomToolBarVisible = NO;
         } else  {
             _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
-            tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
+            tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
             _topToolBarVisible = YES;
             _bottomToolBarVisible = YES;
         }
@@ -318,7 +323,7 @@ static inline double radians (double degrees);
     tBar = [[UIToolbar alloc] init];
     tBar.barStyle = UIBarStyleDefault;
     [tBar sizeToFit];
-    tBar.frame = CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44);
+    tBar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44);
     [self.view addSubview:tBar];
     
     
@@ -1116,6 +1121,12 @@ static inline double radians (double degrees) {return degrees * M_PI/180;}
     UIGraphicsEndImageContext();
 //    CGContextRelease(context);      //  @leak @sedat : Incorrect decrement of the reference of an object that is not owned at this point by caller
     return retImage;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+	if (motion == UIEventSubtypeMotionShake) {
+		[self swipedDown:nil];
+	}
 }
 
 @end
