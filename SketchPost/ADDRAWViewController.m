@@ -244,6 +244,7 @@ static inline double radians (double degrees);
     _topToolBar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:.3];
     [self.view addSubview:_topToolBar];
     UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btnCancel.frame = CGRectMake(10, (_topToolBar.bounds.size.height-30)/2, 60, 30);
     [btnCancel setTitle:@"X" forState:UIControlStateNormal];
     [btnCancel addTarget:self action:@selector(navBtnBack_Clicked:) forControlEvents:UIControlEventTouchUpInside];
     [_topToolBar addSubview:btnCancel];
@@ -264,10 +265,11 @@ static inline double radians (double degrees);
     [toolButtons addTarget:self action:@selector(segmentControlEvent:) forControlEvents:UIControlEventValueChanged];
     
     UIButton *btnSave = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btnSave.frame = CGRectOffset(btnCancel.frame, _topToolBar.bounds.size.width-70, 0);
     [btnSave setTitle:@"Save" forState:UIControlStateNormal];
     [btnSave addTarget:self action:@selector(navBtnSave_Clicked:) forControlEvents:UIControlEventTouchUpInside];
     [_topToolBar addSubview:btnSave];
-    btnSave.frame = CGRectOffset(btnSave.frame, self.view.bounds.size.width- btnSave.bounds.size.width, 0);
+    
     NSLog(@"btnSave %@, btnCancel %@", NSStringFromCGRect(btnSave.frame), NSStringFromCGRect(btnCancel.frame));
 //    UIBarButtonItem *saveBarButton = [[UIBarButtonItem alloc] initWithTitle:@"SAVE" style:UIBarButtonItemStyleDone target:self action:@selector(navBtnSave_Clicked:)];
 //    self.navigationItem.rightBarButtonItem = saveBarButton;

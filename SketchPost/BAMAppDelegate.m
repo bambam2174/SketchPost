@@ -125,6 +125,7 @@ NSString *const SCSessionStateChangedNotification = @"de.adrodev.kilinc.sketchpo
 
 -(void)fbDidExtendToken:(NSString *)accessToken expiresAt:(NSDate *)expiresAt {
     NSLog(@"token extended");
+    NSLog(@"accessToken %@", accessToken);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:accessToken forKey:@"FBAccessTokenKey"];
     [defaults setObject:expiresAt forKey:@"FBExpirationDateKey"];

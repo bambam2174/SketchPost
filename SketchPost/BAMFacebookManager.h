@@ -20,6 +20,9 @@
 @protocol BAMFacebookManagerDelegate <NSObject>
 
 -(void)userDetailsFetched:(NSDictionary<FBGraphUser> *)user;
+-(void)friendspickerDoneWasPressed:(id)sender;
+-(void)friendspickerCancelWasPressed:(id)sender;
+
 
 @end
 
@@ -42,5 +45,6 @@
 -(NSArray *)getUserEducation;
 -(NSArray *)getFavouriteAthletes;
 -(NSArray *)getFavouriteTeams;
+-(void)uploadImage:(UIImage *)image;
 
 @end

@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMFacebookManager.m"
-         timestampString = "384796477.961216"
+         timestampString = "385473370.447929"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "129"
-         endingLineNumber = "129"
+         startingLineNumber = "160"
+         endingLineNumber = "160"
          landmarkName = "@implementation BAMFacebookManager"
          landmarkType = "3">
       </FileBreakpoint>
@@ -86,7 +86,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "384794273.553262"
+         timestampString = "385402965.305828"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "193"
@@ -95,7 +95,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMFacebookManager.m"
@@ -112,7 +112,7 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "384974809.163943"
+         timestampString = "385402965.305828"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "183"
@@ -151,12 +151,51 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "385326200.369673"
+         timestampString = "385467344.1635"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1127"
-         endingLineNumber = "1127"
+         startingLineNumber = "1129"
+         endingLineNumber = "1129"
          landmarkName = "-motionEnded:withEvent:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SketchPost/BAMFacebookManager.m"
+         timestampString = "385399995.676639"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "127"
+         endingLineNumber = "127"
+         landmarkName = "-facebookViewControllerCancelWasPressed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SketchPost/BAMFacebookManager.m"
+         timestampString = "385399997.038237"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "133"
+         endingLineNumber = "133"
+         landmarkName = "-facebookViewControllerDoneWasPressed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SketchPost/ADDRAWViewController.m"
+         timestampString = "385467453.829445"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "515"
+         endingLineNumber = "515"
+         landmarkName = "-navBtnSave_Clicked:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

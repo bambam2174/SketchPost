@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4002D83C16F8B71500778FCA /* BamPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4002D83B16F8B71500778FCA /* BamPickerController.m */; };
 		4046B45C16EF535C00134227 /* NSDictionary+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046B45B16EF535C00134227 /* NSDictionary+Plist.m */; };
 		4066CACE16E4E14F002DEEB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACD16E4E14F002DEEB7 /* UIKit.framework */; };
 		4066CAD016E4E14F002DEEB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACF16E4E14F002DEEB7 /* Foundation.framework */; };
@@ -54,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4002D83A16F8B71500778FCA /* BamPickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BamPickerController.h; sourceTree = "<group>"; };
+		4002D83B16F8B71500778FCA /* BamPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BamPickerController.m; sourceTree = "<group>"; };
 		4046B45A16EF535C00134227 /* NSDictionary+Plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Plist.h"; sourceTree = "<group>"; };
 		4046B45B16EF535C00134227 /* NSDictionary+Plist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Plist.m"; sourceTree = "<group>"; };
 		4066CAC916E4E14F002DEEB7 /* SketchPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SketchPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -217,6 +220,8 @@
 		408A333816E652B500367735 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				4002D83A16F8B71500778FCA /* BamPickerController.h */,
+				4002D83B16F8B71500778FCA /* BamPickerController.m */,
 				4066CB7216E75994002DEEB7 /* ADSBorderedTextfield.h */,
 				4066CB7316E75994002DEEB7 /* ADSBorderedTextfield.m */,
 				408A332116E652AD00367735 /* ADDRAWViewController.h */,
@@ -372,6 +377,7 @@
 				4066CB7116E75429002DEEB7 /* BAMLoginController.m in Sources */,
 				4066CB7416E75994002DEEB7 /* ADSBorderedTextfield.m in Sources */,
 				4046B45C16EF535C00134227 /* NSDictionary+Plist.m in Sources */,
+				4002D83C16F8B71500778FCA /* BamPickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

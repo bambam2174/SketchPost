@@ -200,7 +200,6 @@
 
 -(void)btnFriends_Clicked:(id)sender {
     _friendsPicker = [[BAMFacebookManager shared] friendsPickerController];
-//    [self.navigationController pushViewController:_friendsPicker animated:YES];
     [self presentViewController:_friendsPicker animated:YES completion:^{
         NSLog(@"FINISHED");
     }];
@@ -211,8 +210,15 @@
 -(void)userDetailsFetched:(NSDictionary<FBGraphUser> *)user {
     [_otherView setUser:user];
 //    [user writeToPlistWithFilename:@"user_atomically.plist"];
+}
 
-    
+-(void)friendspickerDoneWasPressed:(id)sender {
+    NSLog(@"selectedFriends %@", [BAMFacebookManager shared].selectedFriends);
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)friendspickerCancelWasPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - ADDRAWViewControllerDelegate
@@ -226,7 +232,7 @@
 }
 
 - (void) OnSketchADDRAWViewController:(ADDRAWViewController *)ctrl saveImage:(UIImage*)image {
-    
+    [[BAMFacebookManager shared] uploadImage:image];
 }
 
 @end

@@ -123,7 +123,38 @@ static BAMFacebookManager *sharedMgrInstance = nil;
     NSLog(@"friendPicker.selection %@", friendPicker.selection);
 }
 
+-(void)facebookViewControllerCancelWasPressed:(id)sender {
+    if ([_delegate respondsToSelector:@selector(friendspickerCancelWasPressed:)]) {
+        [_delegate friendspickerCancelWasPressed:sender];
+    }
+}
+
+-(void)facebookViewControllerDoneWasPressed:(id)sender {
+    if ([_delegate respondsToSelector:@selector(friendspickerDoneWasPressed:)]) {
+        [_delegate friendspickerDoneWasPressed:sender];
+    }
+}
+
 #pragma mark -
+
+-(void)uploadImage:(UIImage *)image {
+    FBRequestConnection *rCon = [[FBRequestConnection alloc] init];
+    
+    FBRequest *req1 = [FBRequest requestForUploadPhoto:image];
+    
+    [rCon addRequest:req1 completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        NSLog(@"connection %@, result %@, error %@", connection.urlResponse, result, error.localizedDescription);
+    }];
+    
+//    FBRequest *req2 = [FBRequest requestForGraphPath:@"{result=photopost:$.id}"];
+//    [rCon addRequest:req2 completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+//        if (!error && result) {
+//            NSString *source = [result objectForKey:@"source"];
+//            NSLog(@"result %@", result);
+//        }
+//    }];
+    [rCon start];
+}
 /*
 -(NSArray *)favoriteTeams {
     NSMutableArray *arrReturn = [[NSMutableArray alloc] init];
@@ -134,6 +165,11 @@ static BAMFacebookManager *sharedMgrInstance = nil;
     return arrReturn;
 }
 */
+-(FBAccessTokenData *)accessToken {
+    
+    FBAccessTokenData *accessTokekData = [[FBSession activeSession] accessTokenData];
+    return accessTokekData;
+}
 #pragma mark -
 -(void)dealloc {
     _friendsPickerController.delegate = nil;
