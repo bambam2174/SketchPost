@@ -25,7 +25,7 @@ NSString *const SCSessionStateChangedNotification = @"de.adrodev.kilinc.sketchpo
     _window.rootViewController = _navController;
     [self.window makeKeyAndVisible];
     if (FBSession.activeSession.state == FBSessionStateCreatedTokenLoaded) {
-        [self openSession];
+        [self openPublishSession];
     } else {
         [self showLoginView];
     }
@@ -100,10 +100,25 @@ NSString *const SCSessionStateChangedNotification = @"de.adrodev.kilinc.sketchpo
     }
 }
 
--(void)openSession {
+-(void)openReadSession {
 
     
     [FBSession openActiveSessionWithReadPermissions:nil allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+        NSLog(@"session %@, status %d, error %@", session, status, error);
+        [self sessionStateChanged:session state:status error:error];
+    }];
+
+    
+//    [FBSession openActiveSessionWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream",
+//                                                        nil] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session,
+//                                                                                                                                                   FBSessionState state, NSError *error) {
+//        if (FBSession.activeSession.isOpen && !error) {
+//            [self fbPostSettings]; 
+//        }];
+}
+
+-(void)openPublishSession {
+    [FBSession openActiveSessionWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream", nil] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
         NSLog(@"session %@, status %d, error %@", session, status, error);
         [self sessionStateChanged:session state:status error:error];
     }];

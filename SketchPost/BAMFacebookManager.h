@@ -47,5 +47,6 @@
 -(NSArray *)getFavouriteAthletes;
 -(NSArray *)getFavouriteTeams;
 -(void)uploadImage:(UIImage *)image;
+-(void)publishMessage:(NSString *)message withSource:(NSString *)source withPicture:(NSString *)pic withLink:(NSString *)link toUser:(NSString *)user;
 
 @end

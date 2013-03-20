@@ -16,6 +16,7 @@ extern NSString *const SCSessionStateChangedNotification;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navController;
 
--(void)openSession;
+-(void)openReadSession;
+-(void)openPublishSession;
 
 @end

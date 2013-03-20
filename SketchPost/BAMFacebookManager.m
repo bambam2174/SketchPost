@@ -150,10 +150,15 @@ static BAMFacebookManager *sharedMgrInstance = nil;
     [rCon addRequest:req2 completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         if (!error && result) {
             _currentSource = [result objectForKey:@"source"];
-            
+            NSString *picture = [result objectForKey:@"picture"];
+            NSString *link = [result objectForKey:@"link"];
+            NSLog(@"_currentSource %@", _currentSource);
             NSLog(@"result %@", result);
+            [self publishMessage:_currentSource withSource:_currentSource withPicture:picture withLink:link toUser:nil];
         }
     }];
+    
+//    [FBRequest re]
     [rCon start];
 }
 /*
@@ -166,6 +171,23 @@ static BAMFacebookManager *sharedMgrInstance = nil;
     return arrReturn;
 }
 */
+
+-(void)publishMessage:(NSString *)message withSource:(NSString *)source withPicture:(NSString *)pic withLink:(NSString *)link toUser:(NSString *)user {
+
+    NSDictionary * facebookParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                     link,                             @"link",
+                                     pic,                            @"picture",
+                                     @"sedat",                             @"name",
+                                     message, @"message",
+                                     source, @"source",
+                                     nil];
+    
+    [FBRequestConnection startWithGraphPath:@"me/feed" parameters:facebookParams HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        NSLog(@"connection %@, result %@, error %@", connection.urlResponse, result, error.localizedDescription);
+    }];
+    
+}
+
 -(FBAccessTokenData *)accessToken {
     
     FBAccessTokenData *accessTokekData = [[FBSession activeSession] accessTokenData];

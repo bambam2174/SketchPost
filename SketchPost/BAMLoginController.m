@@ -80,7 +80,7 @@
     LOG_METHOD2
     [_spinner startAnimating];
     BAMAppDelegate *appDelegate = [UIApplication sharedApplication].delegate;
-    [appDelegate openSession];
+    [appDelegate openPublishSession];
 }
 
 -(void)loginFailed {
