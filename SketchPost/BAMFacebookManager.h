@@ -29,6 +29,7 @@
 @interface BAMFacebookManager : NSObject <FBFriendPickerDelegate /*, BAMUser*/> {
     NSDictionary<FBGraphUser> *_user;
     FBFriendPickerViewController *_friendsPickerController;
+    NSString *_currentSource;
 }
 
 @property (unsafe_unretained) id<BAMFacebookManagerDelegate> delegate;

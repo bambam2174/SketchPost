@@ -144,15 +144,16 @@ static BAMFacebookManager *sharedMgrInstance = nil;
     
     [rCon addRequest:req1 completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         NSLog(@"connection %@, result %@, error %@", connection.urlResponse, result, error.localizedDescription);
-    }];
+    } batchEntryName:@"photopost"];
     
-//    FBRequest *req2 = [FBRequest requestForGraphPath:@"{result=photopost:$.id}"];
-//    [rCon addRequest:req2 completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-//        if (!error && result) {
-//            NSString *source = [result objectForKey:@"source"];
-//            NSLog(@"result %@", result);
-//        }
-//    }];
+    FBRequest *req2 = [FBRequest requestForGraphPath:@"{result=photopost:$.id}"];
+    [rCon addRequest:req2 completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error && result) {
+            _currentSource = [result objectForKey:@"source"];
+            
+            NSLog(@"result %@", result);
+        }
+    }];
     [rCon start];
 }
 /*
