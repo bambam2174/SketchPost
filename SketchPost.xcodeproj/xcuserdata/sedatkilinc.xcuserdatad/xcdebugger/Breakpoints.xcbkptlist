@@ -21,11 +21,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMAppDelegate.m"
-         timestampString = "384797368.459136"
+         timestampString = "385506699.259233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "114"
-         endingLineNumber = "114"
+         startingLineNumber = "129"
+         endingLineNumber = "129"
          landmarkName = "-showLoginView"
          landmarkType = "5">
       </FileBreakpoint>
@@ -60,13 +60,13 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMFacebookManager.m"
-         timestampString = "385473370.447929"
+         timestampString = "385506699.259233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
-         landmarkName = "@implementation BAMFacebookManager"
-         landmarkType = "3">
+         startingLineNumber = "163"
+         endingLineNumber = "163"
+         landmarkName = "-uploadImage:"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
