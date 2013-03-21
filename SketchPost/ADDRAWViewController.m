@@ -175,8 +175,16 @@ static inline double radians (double degrees);
 }
 
 
+- (void)cls {
+    pc = 0;
+    bild = nil;
+    [dictPaths removeAllObjects];
+    [self drawHistory];
+}
+
 -(void)swipedDown:(id)sender {
     LOG_METHOD2
+    [self cls];
     [_delegate swipeGesture:UISwipeGestureRecognizerDirectionDown];
 }
 
@@ -506,6 +514,7 @@ static inline double radians (double degrees);
     else
     {
         [_delegate OnSketchADDRAWViewControllerCancel:self];
+        [self cls];
     }
     
 }
@@ -1090,6 +1099,7 @@ static inline double radians (double degrees);
         if(buttonIndex == 1)
         {
             [_delegate OnSketchADDRAWViewControllerCancel:self];
+            [self cls];
         }
     }
     

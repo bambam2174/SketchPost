@@ -154,7 +154,8 @@ static BAMFacebookManager *sharedMgrInstance = nil;
             NSString *link = [result objectForKey:@"link"];
             NSLog(@"_currentSource %@", _currentSource);
             NSLog(@"result %@", result);
-            [self publishMessage:_currentSource withSource:_currentSource withPicture:picture withLink:link toUser:nil];
+//            [self publishMessage:@"Watch this!" withSource:_currentSource withPicture:picture withLink:link toUser:nil];
+            [self publishMessage:@"Watch this!" withSource:nil withPicture:picture withLink:nil toUser:nil];
         }
     }];
     
@@ -182,7 +183,16 @@ static BAMFacebookManager *sharedMgrInstance = nil;
                                      source, @"source",
                                      nil];
     
-    [FBRequestConnection startWithGraphPath:@"me/feed" parameters:facebookParams HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+    NSMutableDictionary *fbParams = [[NSMutableDictionary alloc] init];
+    if(message) [fbParams setValue:message forKey:@"message"];
+    if(source)  [fbParams setValue:source forKey:@"source"];
+    if(pic)  [fbParams setValue:pic forKey:@"picture"];
+    if(link)  [fbParams setValue:link forKey:@"link"];
+    [fbParams setValue:@"sedat" forKey:@"name"];
+    NSString *szGraphPath = (user) ? [NSString stringWithFormat:@"me/feed"]:@"me/feed";
+    
+    NSLog(@"facebookParams %@, fbParams %@", facebookParams, fbParams);
+    [FBRequestConnection startWithGraphPath:szGraphPath parameters:fbParams HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         NSLog(@"connection %@, result %@, error %@", connection.urlResponse, result, error.localizedDescription);
     }];
     
