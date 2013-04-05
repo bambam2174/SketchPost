@@ -56,7 +56,8 @@
     
     UIAlertView *cancelAlertView;
     UIView *_topToolBar;
-    
+    UISegmentedControl *_toolButtons;
+    UIView *_graySheet;
     BOOL _topToolBarVisible;
     BOOL _bottomToolBarVisible;
 }

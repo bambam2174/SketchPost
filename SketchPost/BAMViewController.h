@@ -46,6 +46,7 @@
     BOOL _isOtherViewVisible;
     BAMFacebookManager *_mgr;
     FBFriendPickerViewController *_friendsPicker;
+    UIView *_graySheet;
 }
 
 @end

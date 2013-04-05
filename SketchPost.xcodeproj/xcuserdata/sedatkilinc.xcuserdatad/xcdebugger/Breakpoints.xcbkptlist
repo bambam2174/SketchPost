@@ -21,25 +21,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMAppDelegate.m"
-         timestampString = "385506699.259233"
+         timestampString = "385757900.978858"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "129"
-         endingLineNumber = "129"
+         startingLineNumber = "125"
+         endingLineNumber = "125"
          landmarkName = "-showLoginView"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "SketchPost/BAMLoginController.m"
-         timestampString = "384273886.236525"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "81"
-         endingLineNumber = "81"
-         landmarkName = "-btnLogin_Clicked:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -47,25 +34,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "384783252.688586"
+         timestampString = "385756377.956508"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "59"
-         endingLineNumber = "59"
+         startingLineNumber = "61"
+         endingLineNumber = "61"
          landmarkName = "-initWithFrame:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "SketchPost/BAMFacebookManager.m"
-         timestampString = "385506699.259233"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "163"
-         endingLineNumber = "163"
-         landmarkName = "-uploadImage:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -79,19 +53,6 @@
          startingLineNumber = "40"
          endingLineNumber = "40"
          landmarkName = "-friendsPickerController"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "SketchPost/BAMViewController.m"
-         timestampString = "385402965.305828"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "193"
-         endingLineNumber = "193"
-         landmarkName = "-swipe_Gest:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -112,37 +73,37 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "385402965.305828"
+         timestampString = "385756377.956508"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "183"
-         endingLineNumber = "183"
+         startingLineNumber = "185"
+         endingLineNumber = "185"
          landmarkName = "-logoutButtonWasPressed:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "385326200.369673"
+         timestampString = "385763819.79628"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "178"
-         endingLineNumber = "178"
+         startingLineNumber = "183"
+         endingLineNumber = "183"
          landmarkName = "-cls"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "385326200.369673"
+         timestampString = "385763819.79628"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "160"
-         endingLineNumber = "160"
+         startingLineNumber = "165"
+         endingLineNumber = "165"
          landmarkName = "-swipedUp:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -151,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "385576855.860852"
+         timestampString = "386073961.574593"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1139"
-         endingLineNumber = "1139"
+         startingLineNumber = "1162"
+         endingLineNumber = "1162"
          landmarkName = "-motionEnded:withEvent:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -173,42 +134,55 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SketchPost/ADDRAWViewController.m"
+         timestampString = "385763819.79628"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "698"
+         endingLineNumber = "698"
+         landmarkName = "-drawHistory"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMFacebookManager.m"
-         timestampString = "385399997.038237"
+         timestampString = "385760094.411482"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "133"
-         endingLineNumber = "133"
-         landmarkName = "-facebookViewControllerDoneWasPressed:"
+         startingLineNumber = "232"
+         endingLineNumber = "232"
+         landmarkName = "-closeMessage:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "385576855.860852"
+         filePath = "SketchPost/BAMFacebookManager.m"
+         timestampString = "385760094.411482"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "524"
-         endingLineNumber = "524"
-         landmarkName = "-navBtnSave_Clicked:"
+         startingLineNumber = "227"
+         endingLineNumber = "227"
+         landmarkName = "-didPresentAlertView:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "385576855.860852"
+         filePath = "SketchPost/BAMFacebookManager.m"
+         timestampString = "385760094.411482"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "693"
-         endingLineNumber = "693"
-         landmarkName = "-drawHistory"
+         startingLineNumber = "201"
+         endingLineNumber = "201"
+         landmarkName = "-publishMessage:withSource:withPicture:withLink:toUser:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

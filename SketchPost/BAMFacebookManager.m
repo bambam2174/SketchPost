@@ -138,6 +138,12 @@ static BAMFacebookManager *sharedMgrInstance = nil;
 #pragma mark -
 
 -(void)uploadImage:(UIImage *)image {
+    [self uploadImage:image delegate:nil];
+}
+
+-(void)uploadImage:(UIImage *)image delegate:(id<BAMFacebookManagerDelegate>)delegate {
+    if(delegate)
+        _delegate = delegate;
     FBRequestConnection *rCon = [[FBRequestConnection alloc] init];
     
     FBRequest *req1 = [FBRequest requestForUploadPhoto:image];
@@ -155,7 +161,7 @@ static BAMFacebookManager *sharedMgrInstance = nil;
             NSLog(@"_currentSource %@", _currentSource);
             NSLog(@"result %@", result);
 //            [self publishMessage:@"Watch this!" withSource:_currentSource withPicture:picture withLink:link toUser:nil];
-            [self publishMessage:@"Watch this!" withSource:nil withPicture:picture withLink:nil toUser:nil];
+            [self publishMessage:@"Watch this!" withSource:nil withPicture:picture withLink:link toUser:nil];
         }
     }];
     
@@ -173,8 +179,9 @@ static BAMFacebookManager *sharedMgrInstance = nil;
 }
 */
 
--(void)publishMessage:(NSString *)message withSource:(NSString *)source withPicture:(NSString *)pic withLink:(NSString *)link toUser:(NSString *)user {
 
+-(void)publishMessage:(NSString *)message withSource:(NSString *)source withPicture:(NSString *)pic withLink:(NSString *)link toUser:(NSString *)user {
+    /*
     NSDictionary * facebookParams = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
                                      link,                             @"link",
                                      pic,                            @"picture",
@@ -182,20 +189,50 @@ static BAMFacebookManager *sharedMgrInstance = nil;
                                      message, @"message",
                                      source, @"source",
                                      nil];
-    
+    */
     NSMutableDictionary *fbParams = [[NSMutableDictionary alloc] init];
     if(message) [fbParams setValue:message forKey:@"message"];
     if(source)  [fbParams setValue:source forKey:@"source"];
     if(pic)  [fbParams setValue:pic forKey:@"picture"];
     if(link)  [fbParams setValue:link forKey:@"link"];
     [fbParams setValue:@"sedat" forKey:@"name"];
-    NSString *szGraphPath = (user) ? [NSString stringWithFormat:@"me/feed"]:@"me/feed";
-    
-    NSLog(@"facebookParams %@, fbParams %@", facebookParams, fbParams);
+    [fbParams setValue:@"SketchPost-App" forKey:@"caption"];
+    NSString *szGraphPath = @"me/feed";
+    if (_selectedFriends && _selectedFriends.count) {
+        
+        
+        for (FBGraphObject<FBGraphUser> *objUser in _selectedFriends) {
+            szGraphPath = [NSString stringWithFormat:@"%@/friends", objUser.id];
+        }
+    }
+    NSLog(@"facebookParams %@", fbParams);
     [FBRequestConnection startWithGraphPath:szGraphPath parameters:fbParams HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
         NSLog(@"connection %@, result %@, error %@", connection.urlResponse, result, error.localizedDescription);
+        [_delegate fbRequestDidFinishWithResult:result error:error];
+        if(!error)
+            [self showMessage:@"\nErfolgreich\n\ngepostet"];
+        else
+            [self showMessage:@"Sketch\nkonnte nicht\ngepostet werden"];
     }];
     
+}
+
+-(void)showMessage:(NSString *)message {
+    _av = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:nil otherButtonTitles:nil];
+    [_av show];
+}
+
+- (void)didPresentAlertView:(UIAlertView *)alertView {
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(closeMessage:) userInfo:nil repeats:NO];
+    
+}
+
+-(void)closeMessage:(NSTimer *)t {
+    [t invalidate];
+    t = nil;
+    [_av dismissWithClickedButtonIndex:0 animated:YES];
+    [_av removeFromSuperview];
 }
 
 -(FBAccessTokenData *)accessToken {

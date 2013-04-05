@@ -22,14 +22,16 @@
 -(void)userDetailsFetched:(NSDictionary<FBGraphUser> *)user;
 -(void)friendspickerDoneWasPressed:(id)sender;
 -(void)friendspickerCancelWasPressed:(id)sender;
-
+-(void)fbRequestDidFinishWithResult:(id)result error:(NSError *)err;
 
 @end
 
-@interface BAMFacebookManager : NSObject <FBFriendPickerDelegate /*, BAMUser*/> {
+@interface BAMFacebookManager : NSObject <FBFriendPickerDelegate, UIAlertViewDelegate /*, BAMUser*/> {
     NSDictionary<FBGraphUser> *_user;
     FBFriendPickerViewController *_friendsPickerController;
     NSString *_currentSource;
+    UIAlertView *_av;
+
 }
 
 @property (unsafe_unretained) id<BAMFacebookManagerDelegate> delegate;
@@ -47,6 +49,7 @@
 -(NSArray *)getFavouriteAthletes;
 -(NSArray *)getFavouriteTeams;
 -(void)uploadImage:(UIImage *)image;
+-(void)uploadImage:(UIImage *)image delegate:(id<BAMFacebookManagerDelegate>)delegate;
 -(void)publishMessage:(NSString *)message withSource:(NSString *)source withPicture:(NSString *)pic withLink:(NSString *)link toUser:(NSString *)user;
 
 @end

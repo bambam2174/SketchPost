@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 adrodev GmbH. All rights reserved.
 //
 
+#define ACTIVITY_INDCTR 19182736
+
 #import "BAMViewController.h"
 #import "NSDictionary+Plist.h"
 
@@ -221,6 +223,10 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)fbRequestDidFinishWithResult:(id)result error:(NSError *)err {
+    [self hideActivityIndicator];
+}
+
 #pragma mark - ADDRAWViewControllerDelegate
 
 -(void)swipeGesture:(UISwipeGestureRecognizerDirection)direction {
@@ -232,7 +238,73 @@
 }
 
 - (void) OnSketchADDRAWViewController:(ADDRAWViewController *)ctrl saveImage:(UIImage*)image {
-    [[BAMFacebookManager shared] uploadImage:image];
+    [self showActivityIndicator];
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), (__bridge void *)(self));
+    [[BAMFacebookManager shared] uploadImage:image delegate:self];
 }
+
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo {
+    NSLog(@"image %p, error %@, contextInfo %@", image, error, contextInfo);
+}
+
+#pragma mark - 
+
+-(void)showActivityIndicator {
+    if(!_graySheet) {
+        _graySheet = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        _graySheet.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        UIActivityIndicatorView *actInd = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        actInd.tag = ACTIVITY_INDCTR;
+        [actInd startAnimating];
+        [_graySheet addSubview:actInd];
+        actInd.frame = CGRectOffset(actInd.frame, (_graySheet.bounds.size.width-actInd.bounds.size.width)/2, (_graySheet.bounds.size.height-actInd.bounds.size.height)/2);
+        _graySheet.frame = CGRectOffset(_graySheet.frame, 0, _graySheet.bounds.size.height);
+    }
+    [self.view addSubview:_graySheet];
+    UIActivityIndicatorView *tmpAct = (UIActivityIndicatorView *)[_graySheet viewWithTag:ACTIVITY_INDCTR];
+    [UIView animateWithDuration:.3 animations:^{
+        _graySheet.frame = CGRectOffset(_graySheet.frame, 0, -_graySheet.bounds.size.height);
+        [tmpAct startAnimating];
+    }];
+}
+
+-(void)hideActivityIndicator {
+    if(!_graySheet)
+        return;
+    UIActivityIndicatorView *tmpAct = (UIActivityIndicatorView *)[_graySheet viewWithTag:ACTIVITY_INDCTR];
+    [UIView animateWithDuration:.3 animations:^{
+        _graySheet.frame = CGRectOffset(_graySheet.frame, 0, _graySheet.bounds.size.height);
+        [tmpAct stopAnimating];
+    } completion:^(BOOL finished) {
+        [_graySheet removeFromSuperview];
+    }];
+}
+
+-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    LOG_METHOD2
+    if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"Portrait : %@", NSStringFromCGRect(self.view.frame));
+    } else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"Landscape : %@", NSStringFromCGRect(self.view.frame));
+    }
+}
+
+
+
+-(BOOL)shouldAutorotate {
+    LOG_METHOD2
+    UIInterfaceOrientation orientation = [[UIDevice currentDevice] orientation];
+    
+    if (orientation == UIInterfaceOrientationPortrait) {
+        NSLog(@"Portrait : %@", NSStringFromCGRect(self.view.frame));
+    } else if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"Landscape : %@", NSStringFromCGRect(self.view.frame));
+    }
+    
+    return YES;
+}
+
+
+
 
 @end

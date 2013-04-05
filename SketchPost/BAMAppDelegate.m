@@ -108,17 +108,13 @@ NSString *const SCSessionStateChangedNotification = @"de.adrodev.kilinc.sketchpo
         [self sessionStateChanged:session state:status error:error];
     }];
 
-    
-//    [FBSession openActiveSessionWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream",
-//                                                        nil] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session,
-//                                                                                                                                                   FBSessionState state, NSError *error) {
-//        if (FBSession.activeSession.isOpen && !error) {
-//            [self fbPostSettings]; 
-//        }];
 }
 
 -(void)openPublishSession {
-    [FBSession openActiveSessionWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream", nil] defaultAudience:FBSessionDefaultAudienceEveryone allowLoginUI:YES completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
+    [FBSession openActiveSessionWithPublishPermissions:[NSArray arrayWithObjects:@"publish_stream", nil]
+                                       defaultAudience:FBSessionDefaultAudienceEveryone
+                                          allowLoginUI:YES
+                                     completionHandler:^(FBSession *session, FBSessionState status, NSError *error) {
         NSLog(@"session %@, status %d, error %@", session, status, error);
         [self sessionStateChanged:session state:status error:error];
     }];

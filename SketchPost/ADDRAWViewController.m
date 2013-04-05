@@ -92,11 +92,15 @@ static inline double radians (double degrees);
     [self setupNavBar];
     [self setupToolbar];
     //    self.view.layer.delegate = self;
+    
+//    UILongPressGestureRecognizer *longPressGest = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(swipedUp:)];
+//    [longPressGest setMinimumPressDuration:1.0];
+//    [self.view addGestureRecognizer:longPressGest];
+    
     UISwipeGestureRecognizer *swipeUpGest = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedUp:)];
     swipeUpGest.numberOfTouchesRequired = 2;
     swipeUpGest.direction = UISwipeGestureRecognizerDirectionUp;
     [self.view addGestureRecognizer:swipeUpGest];
-    
     
     UISwipeGestureRecognizer *swipeDownGest = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipedDown:)];
     swipeDownGest.numberOfTouchesRequired = 2;
@@ -125,6 +129,7 @@ static inline double radians (double degrees);
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
 
 /*
 - (void)viewWillAppear:(BOOL)animated
@@ -170,7 +175,7 @@ static inline double radians (double degrees);
             _bottomToolBarVisible = YES;
         }
     }];
-    
+    [self btnUndo_Clicked:nil];
     [_delegate swipeGesture:UISwipeGestureRecognizerDirectionUp];
 }
 
@@ -258,23 +263,23 @@ static inline double radians (double degrees);
     [_topToolBar addSubview:btnCancel];
 //    UIBarButtonItem *navBarButton = [[UIBarButtonItem alloc] initWithTitle:@"X" style:UIBarButtonItemStyleBordered target:self action:@selector(navBtnBack_Clicked:)];
 //    self.navigationItem.leftBarButtonItem = navBarButton;
-    UISegmentedControl *toolButtons = [[UISegmentedControl alloc] init] ;//WithItems:[NSArray arrayWithObjects:@"Linie", @"Bild laden", @"A", nil]];
+    _toolButtons = [[UISegmentedControl alloc] init] ;//WithItems:[NSArray arrayWithObjects:@"Linie", @"Bild laden", @"A", nil]];
     
-    [toolButtons insertSegmentWithImage:[UIImage imageNamed:@"icon_skatch_line.png"]  atIndex:0 animated:true];
-    [toolButtons insertSegmentWithImage:[UIImage imageNamed:@"icon_skatch_text.png"]  atIndex:1 animated:true];
-    [toolButtons insertSegmentWithImage:[UIImage imageNamed:@"icon_skatch_pic.png"]  atIndex:2 animated:true];
+    [_toolButtons insertSegmentWithImage:[UIImage imageNamed:@"icon_skatch_line.png"]  atIndex:0 animated:true];
+    [_toolButtons insertSegmentWithImage:[UIImage imageNamed:@"icon_skatch_text.png"]  atIndex:1 animated:true];
+    [_toolButtons insertSegmentWithImage:[UIImage imageNamed:@"icon_skatch_pic.png"]  atIndex:2 animated:true];
     
 
-    toolButtons.frame = CGRectMake(73, 7, 180, 30);
-    toolButtons.segmentedControlStyle = UISegmentedControlStyleBar;
-    toolButtons.selectedSegmentIndex = 0;
+    _toolButtons.frame = CGRectMake(73, 7, 180, 30);
+    _toolButtons.segmentedControlStyle = UISegmentedControlStyleBar;
+    _toolButtons.selectedSegmentIndex = 0;
 //    [self.navigationController.navigationBar addSubview:toolButtons];
-    [_topToolBar addSubview:toolButtons];
-    [toolButtons addTarget:self action:@selector(segmentControlEvent:) forControlEvents:UIControlEventValueChanged];
+    [_topToolBar addSubview:_toolButtons];
+    [_toolButtons addTarget:self action:@selector(segmentControlEvent:) forControlEvents:UIControlEventValueChanged];
     
     UIButton *btnSave = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     btnSave.frame = CGRectOffset(btnCancel.frame, _topToolBar.bounds.size.width-70, 0);
-    [btnSave setTitle:@"Save" forState:UIControlStateNormal];
+    [btnSave setTitle:@"Send" forState:UIControlStateNormal];
     [btnSave addTarget:self action:@selector(navBtnSave_Clicked:) forControlEvents:UIControlEventTouchUpInside];
     [_topToolBar addSubview:btnSave];
     
@@ -768,6 +773,9 @@ static inline double radians (double degrees);
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
+    
+    [_toolButtons setSelectedSegmentIndex:0];
+    
     if (canvas2Top) {
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.5];
@@ -854,6 +862,9 @@ static inline double radians (double degrees);
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     NSLog(@"touch.tapCount %d", touch.tapCount);
+    NSLog(@"\ntouches %@,\ntouch %@, \nevent %@", touches, touch, event);
+    if(touch.tapCount > 1)
+        return;
     CGPoint p = [touch locationInView:tmpImgVw];
     _lblTopAnzeige.text = [NSString stringWithFormat:@"%d", [touch tapCount]];
     mouseSwiped = NO;
@@ -865,9 +876,9 @@ static inline double radians (double degrees);
 
 -(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     LOG_METHOD
-    
     mouseSwiped = YES;
     UITouch *touch = [touches anyObject];
+    NSLog(@"\ntouches %@,\ntouch %@, \nevent %@", touches, touch, event);
     NSLog(@"touch.tapCount %d", touch.tapCount);
     if(touch.tapCount > 1)
         return;
@@ -905,9 +916,10 @@ static inline double radians (double degrees);
 
     _lblTopAnzeige.text = @"";
     
-    /*
+    
      UITouch *touch = [touches anyObject];
-    if ([touch tapCount] == 2) {
+    NSLog(@"\ntouches %@,\ntouch %@, \nevent %@", touches, touch, event);
+    /*if ([touch tapCount] == 2) {
         tmpImgVw.image = nil;
         pc = 0;
         return;
@@ -1084,7 +1096,20 @@ static inline double radians (double degrees);
 }
 
 
+#pragma mark -
 
+-(BOOL)shouldAutorotate {
+    
+    UIInterfaceOrientation orientation = [[UIDevice currentDevice] orientation];
+    
+    if (orientation == UIInterfaceOrientationPortrait) {
+        NSLog(@"Portrait : %@", NSStringFromCGRect(self.view.frame));
+    } else if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"Landscape : %@", NSStringFromCGRect(self.view.frame));
+    }
+    
+    return YES;
+}
 
 
 
@@ -1102,8 +1127,6 @@ static inline double radians (double degrees);
             [self cls];
         }
     }
-    
-    
     
 }
 
