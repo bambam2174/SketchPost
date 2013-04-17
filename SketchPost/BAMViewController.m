@@ -17,10 +17,16 @@
 
 @implementation BAMView
 
+-(void)layoutSubviews {
+    _btnStart.frame = CGRectMake(10, self.frame.size.height-30, 100, 30);
+    _btnFriends.frame = CGRectMake(self.frame.size.width-110, self.frame.size.height-30, 100, 30);
+}
+
 - (void)addButtonStart
 {
     _btnStart = [[UIButton alloc] initWithFrame:CGRectMake(10, self.frame.size.height-30, 100, 30)];
     _btnStart.layer.cornerRadius = 10.0f;
+    _btnStart.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
     [_btnStart setBackgroundColor:[UIColor blackColor]];
     [_btnStart setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_btnStart setTitleColor:[UIColor yellowColor] forState:UIControlStateHighlighted];
@@ -33,6 +39,7 @@
 {
     _btnFriends = [[UIButton alloc] initWithFrame:CGRectMake(120, self.frame.size.height-30, 100, 30)];
     _btnFriends.layer.cornerRadius = 10.0f;
+    _btnFriends.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin;
     [_btnFriends setBackgroundColor:[UIColor blackColor]];
     [_btnFriends setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [_btnFriends setTitleColor:[UIColor yellowColor] forState:UIControlStateHighlighted];
@@ -49,6 +56,7 @@
         
         _profilePictureView = [[FBProfilePictureView alloc] initWithFrame:CGRectMake(10, 10, 75, 75)];
         _profilePictureView.backgroundColor = [UIColor clearColor];
+        _profilePictureView.layer.cornerRadius = 10.0f;
         [self addSubview:_profilePictureView];
         
         _lblStuff = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 200, 25)];
@@ -91,6 +99,16 @@
     
 }
 
+-(void)setDeviceOrientation:(UIDeviceOrientation)orientation {
+    if (UIDeviceOrientationIsPortrait(orientation)) {
+        _btnStart.frame = CGRectMake(10, self.frame.size.height-30, 100, 30);
+        _btnFriends.frame = CGRectMake(120, self.frame.size.height-30, 100, 30);
+    } else if (UIDeviceOrientationIsLandscape(orientation)) {
+        _btnStart.frame = CGRectMake(10, self.frame.size.width-30, 100, 30);
+        _btnFriends.frame = CGRectMake(120, self.frame.size.width-30, 100, 30);
+    }
+}
+
 @end
 
 #pragma mark -
@@ -129,7 +147,9 @@
     self.view.backgroundColor = [UIColor clearColor];
     
     m_sketchController = [[ADDRAWViewController alloc] init];
-    m_sketchController.view.frame = [UIScreen mainScreen].bounds ;
+    m_sketchController.view.frame = [UIScreen mainScreen].bounds;
+    m_sketchController.view.autoresizesSubviews = YES;
+    m_sketchController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     m_sketchController.delegate = self;
 //    [self.navigationController.navigationBar addSubview:[m_sketchController.navigationController.navigationBar.subviews objectAtIndex:0]];
     
@@ -168,6 +188,8 @@
 
 -(void)setupOtherView {
     _otherView = [[BAMView alloc] initWithFrame:self.view.bounds];
+    _otherView.autoresizesSubviews = YES;
+    _otherView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     UISwipeGestureRecognizer *swipeBack = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeBack_Gest:)];
     swipeBack.numberOfTouchesRequired = 1;
     swipeBack.direction = UISwipeGestureRecognizerDirectionLeft;
@@ -282,12 +304,39 @@
 
 -(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
     LOG_METHOD2
+    //[_otherView setDeviceOrientation:toInterfaceOrientation];
+    /*
     if (toInterfaceOrientation == UIInterfaceOrientationPortrait || toInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
         NSLog(@"Portrait : %@", NSStringFromCGRect(self.view.frame));
+        
+//        _otherView.frame = self.view.frame;
     } else if (toInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || toInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
         NSLog(@"Landscape : %@", NSStringFromCGRect(self.view.frame));
+        _otherView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+//        _otherView.frame = self.view.frame;
     }
+    */
 }
+
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    if (UIDeviceOrientationIsPortrait(fromInterfaceOrientation))
+        NSLog(@"Landscape");
+    else
+        NSLog(@"Protrait");
+    NSLog(@"self.view.frame %@", NSStringFromCGRect(self.view.frame));
+    _otherView.frame = self.view.frame;
+    m_sketchController.view.frame = self.view.frame;
+}
+
+//-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+//    if (fromInterfaceOrientation == UIInterfaceOrientationPortrait || fromInterfaceOrientation == UIInterfaceOrientationPortraitUpsideDown) {
+//        NSLog(@"Portrait : %@", NSStringFromCGRect(self.view.frame));
+//        self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.height, self.view.frame.size.width);
+//    } else if (fromInterfaceOrientation == UIInterfaceOrientationLandscapeLeft || fromInterfaceOrientation == UIInterfaceOrientationLandscapeRight) {
+//        NSLog(@"Landscape : %@", NSStringFromCGRect(self.view.frame));
+//        self.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+//    }
+//}
 
 
 
@@ -302,6 +351,10 @@
     }
     
     return YES;
+}
+
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
 }
 
 

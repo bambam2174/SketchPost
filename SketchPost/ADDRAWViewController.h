@@ -67,6 +67,8 @@
 
 @property (nonatomic, unsafe_unretained) id<ADDRAWViewControllerDelegate> delegate;
 
+-(void)setDeviceOrientation:(UIDeviceOrientation)orientation;
+
 @end
 
 @protocol ADDRAWViewControllerDelegate <NSObject>

@@ -175,7 +175,7 @@ static inline double radians (double degrees);
             _bottomToolBarVisible = YES;
         }
     }];
-    [self btnUndo_Clicked:nil];
+//    [self btnUndo_Clicked:nil];
     [_delegate swipeGesture:UISwipeGestureRecognizerDirectionUp];
 }
 
@@ -254,6 +254,8 @@ static inline double radians (double degrees);
 - (void)setupNavBar {
 //    self.navigationItem.title = @"Sketch it";
     _topToolBar = [[UIView alloc] initWithFrame:CGRectMake(/*self.view.bounds.size.width*/0, -44, self.view.bounds.size.width, 44)];
+    _toolButtons.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _toolButtons.autoresizesSubviews = YES;
     _topToolBar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:.3];
     [self.view addSubview:_topToolBar];
     UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -492,8 +494,22 @@ static inline double radians (double degrees);
 -(void)setupCanvas {
     tmpImgVw = [[UIImageView alloc] initWithFrame:self.view.bounds];
     [tmpImgVw setBackgroundColor:[UIColor clearColor]];
-    //[tmpImgVw setContentMode:UIViewContentModeScaleAspectFit];
+    tmpImgVw.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [tmpImgVw setContentMode:UIViewContentModeScaleAspectFill];
     [self.view addSubview:tmpImgVw];
+}
+
+-(void)viewWillLayoutSubviews {
+    _topToolBar.frame = CGRectMake(/*self.view.bounds.size.width*/0, -44, self.view.bounds.size.width, 44);
+    tBar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44);
+}
+
+-(void)setDeviceOrientation:(UIDeviceOrientation)orientation {
+    if (UIDeviceOrientationIsPortrait(orientation)) {
+        
+    } else if (UIDeviceOrientationIsLandscape(orientation)) {
+        
+    }
 }
 
 #pragma mark - UI Element Events
@@ -1099,7 +1115,7 @@ static inline double radians (double degrees);
 #pragma mark -
 
 -(BOOL)shouldAutorotate {
-    
+    LOG_METHOD2
     UIInterfaceOrientation orientation = [[UIDevice currentDevice] orientation];
     
     if (orientation == UIInterfaceOrientationPortrait) {
@@ -1111,7 +1127,17 @@ static inline double radians (double degrees);
     return YES;
 }
 
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskAll;
+}
 
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    if (UIDeviceOrientationIsPortrait(fromInterfaceOrientation))
+        NSLog(@"Landscape");
+     else
+        NSLog(@"Protrait");
+    NSLog(@"self.view.frame %@", NSStringFromCGRect(self.view.frame));
+}
 
 #pragma mark - UIAlertViewDelegate
 

@@ -30,6 +30,7 @@
 
 -(void)addButtonStartTarget:(id)target action:(SEL)selector;
 -(void)addButtonFriendTarget:(id)target action:(SEL)selector;
+-(void)setDeviceOrientation:(UIDeviceOrientation)orientation;
 
 @end
 
