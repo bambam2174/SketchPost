@@ -106,15 +106,23 @@ static inline double radians (double degrees);
     swipeDownGest.numberOfTouchesRequired = 2;
     swipeDownGest.direction = UISwipeGestureRecognizerDirectionDown;
     [self.view addGestureRecognizer:swipeDownGest];
+    
+    
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(selector) name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     need2turn = NO;
+    
 	
 }
-
+/*
+-(void)notif:(NSNotification *)n {
+    NSLog(@"%@", n);
+}
+*/
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.view becomeFirstResponder];
@@ -160,19 +168,27 @@ static inline double radians (double degrees);
     return (dictPaths.count);
 }
 
+- (void)hideToolbars {
+    _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
+    tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
+    _topToolBarVisible = NO;
+    _bottomToolBarVisible = NO;
+}
+
+- (void)showToolbars {
+    _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
+    tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
+    _topToolBarVisible = YES;
+    _bottomToolBarVisible = YES;
+}
+
 -(void)swipedUp:(id)sender {
     LOG_METHOD2
     [UIView animateWithDuration:0.3 animations:^{
         if (_topToolBarVisible) {
-            _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
-            tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
-            _topToolBarVisible = NO;
-            _bottomToolBarVisible = NO;
+            [self hideToolbars];
         } else  {
-            _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
-            tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
-            _topToolBarVisible = YES;
-            _bottomToolBarVisible = YES;
+            [self showToolbars];
         }
     }];
 //    [self btnUndo_Clicked:nil];
@@ -1008,7 +1024,7 @@ static inline double radians (double degrees);
     for (int j=pc; j<[dictPaths count]; j++) {
         [dictPaths removeObjectForKey:[NSString stringWithFormat:@"%d", j]];
     }
-    DLog(@"dictPaths : %@", dictPaths);
+//    DLog(@"dictPaths : %@", dictPaths);
  
 }
 

@@ -13,20 +13,29 @@
 - (void)setUp
 {
     [super setUp];
-    
+    _mgr = [BAMFacebookManager shared];
+    _mgr.delegate = self;
     // Set-up code here.
 }
 
 - (void)tearDown
 {
     // Tear-down code here.
-    
+    _mgr.delegate = nil;
+    _mgr = nil;
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testFacebookManager
 {
-    STFail(@"Unit tests are not implemented yet in SketchPostTests");
+    BAMFacebookManager *obj = [BAMFacebookManager shared];
+    STAssertTrue([obj isKindOfClass:[BAMFacebookManager class]], @"Klasse ist richtig/falsch");
 }
+
+-(void)testFriendsPickerController {
+    FBFriendPickerViewController *ctrl = [[BAMFacebookManager shared] friendsPickerController];
+    STAssertNotNil(ctrl, @"FBFriendPickerViewController ist null");
+}
+
 
 @end

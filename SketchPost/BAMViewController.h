@@ -24,6 +24,7 @@
     UILabel *_lblStuff;
     UIButton *_btnStart;
     UIButton *_btnFriends;
+    MPVolumeView *_volumeView;
 }
 
 @property (strong, nonatomic) NSDictionary<FBGraphUser> *user;
@@ -49,5 +50,7 @@
     FBFriendPickerViewController *_friendsPicker;
     UIView *_graySheet;
 }
+
+void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData);
 
 @end

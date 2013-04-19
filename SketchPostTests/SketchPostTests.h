@@ -7,7 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "BAMFacebookManager.h"
 
-@interface SketchPostTests : SenTestCase
+@interface SketchPostTests : SenTestCase 
+
+@property BAMFacebookManager *mgr;
 
 @end

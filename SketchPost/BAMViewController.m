@@ -17,6 +17,32 @@
 
 @implementation BAMView
 
+- (id)initWithFrame:(CGRect)frame
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        // Initialization code
+        _volumeView = [[MPVolumeView alloc] initWithFrame:self.bounds];
+        _volumeView.frame = CGRectOffset(_volumeView.frame, 0, -_volumeView.frame.size.height);
+        [self addSubview:_volumeView];
+        _profilePictureView = [[FBProfilePictureView alloc] initWithFrame:CGRectMake(10, 10, 75, 75)];
+        _profilePictureView.backgroundColor = [UIColor clearColor];
+        _profilePictureView.layer.cornerRadius = 10.0f;
+        [self addSubview:_profilePictureView];
+        
+        _lblStuff = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 200, 25)];
+        _lblStuff.backgroundColor = [UIColor clearColor];
+        [self addSubview:_lblStuff];
+        
+        _lblStuff.text = @"HalloWelt HelloWorld Merhaba Dünya";
+        self.backgroundColor = [UIColor redColor];
+        
+        [self addButtonStart];
+        [self addButtonFriends];
+    }
+    return self;
+}
+
 -(void)layoutSubviews {
     _btnStart.frame = CGRectMake(10, self.frame.size.height-30, 100, 30);
     _btnFriends.frame = CGRectMake(self.frame.size.width-110, self.frame.size.height-30, 100, 30);
@@ -46,30 +72,6 @@
     [_btnFriends setTitle:@"Friends" forState:UIControlStateNormal];
     
     [self addSubview:_btnFriends];
-}
-
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-        
-        _profilePictureView = [[FBProfilePictureView alloc] initWithFrame:CGRectMake(10, 10, 75, 75)];
-        _profilePictureView.backgroundColor = [UIColor clearColor];
-        _profilePictureView.layer.cornerRadius = 10.0f;
-        [self addSubview:_profilePictureView];
-        
-        _lblStuff = [[UILabel alloc] initWithFrame:CGRectMake(95, 10, 200, 25)];
-        _lblStuff.backgroundColor = [UIColor clearColor];
-        [self addSubview:_lblStuff];
-        
-        _lblStuff.text = @"HalloWelt HelloWorld Merhaba Dünya";
-        self.backgroundColor = [UIColor redColor];
-        
-        [self addButtonStart];
-        [self addButtonFriends];
-    }
-    return self;
 }
 
 /*
@@ -159,10 +161,19 @@
     [m_sketchController.view addGestureRecognizer:swipeLeft];
     [self.view addSubview:m_sketchController.view];
     [self setupOtherView];
+    AudioSessionInitialize(NULL, NULL, NULL, NULL);
+    AudioSessionSetActive(true);
+    AudioSessionAddPropertyListener(kAudioSessionProperty_CurrentHardwareOutputVolume, audioVolumeChangeListenerCallback, (__bridge void *)(self));
 }
 
 -(void)viewDidAppear:(BOOL)animated {
     [self flipToOtherView:nil];
+}
+
+void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData) {
+    NSLog(@"%@", inUserData);
+    NSLog(@"%f", *(Float32 *)inData);
+    AudioSessionRemovePropertyListenerWithUserData(kAudioSessionProperty_CurrentHardwareOutputVolume, NULL, NULL);
 }
 
 -(void)flipToOtherView:(id)sender {
@@ -349,8 +360,10 @@
     } else if (orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight) {
         NSLog(@"Landscape : %@", NSStringFromCGRect(self.view.frame));
     }
-    
-    return YES;
+    if(_isOtherViewVisible)
+        return YES;
+    else
+        return NO;
 }
 
 -(NSUInteger)supportedInterfaceOrientations {

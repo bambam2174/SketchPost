@@ -9,6 +9,18 @@
 /* Begin PBXBuildFile section */
 		4002D83C16F8B71500778FCA /* BamPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4002D83B16F8B71500778FCA /* BamPickerController.m */; };
 		4046B45C16EF535C00134227 /* NSDictionary+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046B45B16EF535C00134227 /* NSDictionary+Plist.m */; };
+		4059778B17216BF50067BC85 /* BamPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4002D83B16F8B71500778FCA /* BamPickerController.m */; };
+		4059778C17216BF50067BC85 /* ADSBorderedTextfield.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CB7316E75994002DEEB7 /* ADSBorderedTextfield.m */; };
+		4059778D17216BF50067BC85 /* ADDRAWViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408A332216E652AD00367735 /* ADDRAWViewController.m */; };
+		4059778E17216BF50067BC85 /* BAMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 408A332416E652AD00367735 /* BAMViewController.m */; };
+		4059778F17216BF50067BC85 /* BAMFacebookManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CB5A16E74A68002DEEB7 /* BAMFacebookManager.m */; };
+		4059779017216BF50067BC85 /* BAMLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CB7016E75428002DEEB7 /* BAMLoginController.m */; };
+		4059779117216BF50067BC85 /* BAMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4066CADD16E4E14F002DEEB7 /* BAMAppDelegate.m */; };
+		4059779417216DAB0067BC85 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CB5616E74546002DEEB7 /* FacebookSDK.framework */; };
+		4059779517216DC50067BC85 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CAD116E4E14F002DEEB7 /* CoreGraphics.framework */; };
+		40597797172173510067BC85 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40597796172173510067BC85 /* AudioToolbox.framework */; };
+		4059779A17217F700067BC85 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40597796172173510067BC85 /* AudioToolbox.framework */; };
+		4059779C172194510067BC85 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4059779B172194510067BC85 /* MediaPlayer.framework */; };
 		4066CACE16E4E14F002DEEB7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACD16E4E14F002DEEB7 /* UIKit.framework */; };
 		4066CAD016E4E14F002DEEB7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CACF16E4E14F002DEEB7 /* Foundation.framework */; };
 		4066CAD216E4E14F002DEEB7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4066CAD116E4E14F002DEEB7 /* CoreGraphics.framework */; };
@@ -59,6 +71,8 @@
 		4002D83B16F8B71500778FCA /* BamPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BamPickerController.m; sourceTree = "<group>"; };
 		4046B45A16EF535C00134227 /* NSDictionary+Plist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+Plist.h"; sourceTree = "<group>"; };
 		4046B45B16EF535C00134227 /* NSDictionary+Plist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+Plist.m"; sourceTree = "<group>"; };
+		40597796172173510067BC85 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		4059779B172194510067BC85 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		4066CAC916E4E14F002DEEB7 /* SketchPost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SketchPost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4066CACD16E4E14F002DEEB7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4066CACF16E4E14F002DEEB7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -109,6 +123,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4059779C172194510067BC85 /* MediaPlayer.framework in Frameworks */,
+				4059779A17217F700067BC85 /* AudioToolbox.framework in Frameworks */,
 				4066CB7616E75D8C002DEEB7 /* QuartzCore.framework in Frameworks */,
 				4066CB6216E74C2D002DEEB7 /* Social.framework in Frameworks */,
 				4066CB6016E74BDF002DEEB7 /* AdSupport.framework in Frameworks */,
@@ -124,6 +140,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40597797172173510067BC85 /* AudioToolbox.framework in Frameworks */,
+				4059779517216DC50067BC85 /* CoreGraphics.framework in Frameworks */,
+				4059779417216DAB0067BC85 /* FacebookSDK.framework in Frameworks */,
 				4066CAEC16E4E14F002DEEB7 /* SenTestingKit.framework in Frameworks */,
 				4066CAED16E4E14F002DEEB7 /* UIKit.framework in Frameworks */,
 				4066CAEE16E4E14F002DEEB7 /* Foundation.framework in Frameworks */,
@@ -136,6 +155,7 @@
 		4066CABE16E4E14F002DEEB7 = {
 			isa = PBXGroup;
 			children = (
+				4059779B172194510067BC85 /* MediaPlayer.framework */,
 				4066CAD316E4E14F002DEEB7 /* SketchPost */,
 				4066CAF116E4E14F002DEEB7 /* SketchPostTests */,
 				4066CACC16E4E14F002DEEB7 /* Frameworks */,
@@ -155,6 +175,7 @@
 		4066CACC16E4E14F002DEEB7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				40597796172173510067BC85 /* AudioToolbox.framework */,
 				4066CB7516E75D8B002DEEB7 /* QuartzCore.framework */,
 				4066CB6116E74C2D002DEEB7 /* Social.framework */,
 				4066CB5F16E74BDF002DEEB7 /* AdSupport.framework */,
@@ -385,6 +406,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4059778B17216BF50067BC85 /* BamPickerController.m in Sources */,
+				4059778C17216BF50067BC85 /* ADSBorderedTextfield.m in Sources */,
+				4059778D17216BF50067BC85 /* ADDRAWViewController.m in Sources */,
+				4059778E17216BF50067BC85 /* BAMViewController.m in Sources */,
+				4059778F17216BF50067BC85 /* BAMFacebookManager.m in Sources */,
+				4059779017216BF50067BC85 /* BAMLoginController.m in Sources */,
+				4059779117216BF50067BC85 /* BAMAppDelegate.m in Sources */,
 				4066CAF916E4E150002DEEB7 /* SketchPostTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,10 +544,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SketchPost/SketchPost-Prefix.pch";
 				INFOPLIST_FILE = "SketchPostTests/SketchPostTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FacebookSDK.framework/Versions/A\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -533,10 +566,15 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
 					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SketchPost/SketchPost-Prefix.pch";
 				INFOPLIST_FILE = "SketchPostTests/SketchPostTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/FacebookSDK.framework/Versions/A\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
