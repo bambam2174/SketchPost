@@ -22,7 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        _volumeView = [[MPVolumeView alloc] initWithFrame:self.bounds];
+        MPVolumeView *_volumeView = [[MPVolumeView alloc] initWithFrame:self.bounds];
         _volumeView.frame = CGRectOffset(_volumeView.frame, 0, -_volumeView.frame.size.height);
         [self addSubview:_volumeView];
         _profilePictureView = [[FBProfilePictureView alloc] initWithFrame:CGRectMake(10, 10, 75, 75)];
@@ -127,11 +127,15 @@
 
 @implementation BAMViewController
 
+Float32 _currentCount;
+
+
 - (id)init
 {
     self = [super init];
     if (self) {
         // Custom initialization
+        _currentCount = .5;
     }
     return self;
 }
@@ -170,10 +174,18 @@
     [self flipToOtherView:nil];
 }
 
+
 void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData) {
+    Float32 newCount = *(Float32 *)inData;
     NSLog(@"%@", inUserData);
-    NSLog(@"%f", *(Float32 *)inData);
+    NSLog(@"%f", newCount);
     AudioSessionRemovePropertyListenerWithUserData(kAudioSessionProperty_CurrentHardwareOutputVolume, NULL, NULL);
+    if (newCount > _currentCount) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kShowToolBars object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kHideToolBars object:nil];
+    }
+    _currentCount = newCount;
 }
 
 -(void)flipToOtherView:(id)sender {

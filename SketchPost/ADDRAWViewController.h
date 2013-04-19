@@ -6,6 +6,9 @@
 //  Copyright (c) 2012 Internship. All rights reserved.
 //
 
+#define kShowToolBars @"kShowToolBars"
+#define kHideToolBars @"kHideToolBars"
+
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -68,6 +71,8 @@
 @property (nonatomic, unsafe_unretained) id<ADDRAWViewControllerDelegate> delegate;
 
 -(void)setDeviceOrientation:(UIDeviceOrientation)orientation;
+- (void)showToolbars;
+- (void)hideToolbars;
 
 @end
 

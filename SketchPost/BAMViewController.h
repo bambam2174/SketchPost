@@ -24,7 +24,7 @@
     UILabel *_lblStuff;
     UIButton *_btnStart;
     UIButton *_btnFriends;
-    MPVolumeView *_volumeView;
+//    MPVolumeView *_volumeView;
 }
 
 @property (strong, nonatomic) NSDictionary<FBGraphUser> *user;

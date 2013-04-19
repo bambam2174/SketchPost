@@ -60,6 +60,9 @@ static inline double radians (double degrees);
     LOG_METHOD
     self = [super init];
     if (self) {
+        MPVolumeView *_volumeView = [[MPVolumeView alloc] initWithFrame:self.view.bounds];
+        _volumeView.frame = CGRectOffset(_volumeView.frame, 0, -_volumeView.frame.size.height);
+        [self.view addSubview:_volumeView];
         _arrPaths = [[NSMutableArray alloc] init];
         dictPaths = [[NSMutableDictionary alloc] init];
         pc = 0;
@@ -74,6 +77,8 @@ static inline double radians (double degrees);
         vOffset = 0.0;
         _topToolBarVisible = NO;
         _bottomToolBarVisible = NO;
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showToolbars) name:kShowToolBars object:nil];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hideToolbars) name:kHideToolBars object:nil];
     }
     return self;
 }
@@ -169,17 +174,25 @@ static inline double radians (double degrees);
 }
 
 - (void)hideToolbars {
-    _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
-    tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
-    _topToolBarVisible = NO;
-    _bottomToolBarVisible = NO;
+    if (!_topToolBarVisible)
+        return;
+    [UIView animateWithDuration:0.3 animations:^{
+        _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
+        tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
+        _topToolBarVisible = NO;
+        _bottomToolBarVisible = NO;
+    }];
 }
 
 - (void)showToolbars {
-    _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
-    tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
-    _topToolBarVisible = YES;
-    _bottomToolBarVisible = YES;
+    if (_topToolBarVisible)
+        return;
+    [UIView animateWithDuration:0.3 animations:^{
+        _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
+        tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
+        _topToolBarVisible = YES;
+        _bottomToolBarVisible = YES;
+    }];
 }
 
 -(void)swipedUp:(id)sender {

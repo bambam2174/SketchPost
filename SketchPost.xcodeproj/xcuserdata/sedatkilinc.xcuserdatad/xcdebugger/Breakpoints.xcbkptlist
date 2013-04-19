@@ -60,11 +60,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "388076887.795365"
+         timestampString = "388077857.312063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "218"
-         endingLineNumber = "218"
+         startingLineNumber = "230"
+         endingLineNumber = "230"
          landmarkName = "-logoutButtonWasPressed:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -73,11 +73,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "388076815.586892"
+         timestampString = "388078117.245063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "191"
-         endingLineNumber = "191"
+         startingLineNumber = "212"
+         endingLineNumber = "212"
          landmarkName = "-cls"
          landmarkType = "5">
       </FileBreakpoint>
@@ -86,11 +86,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "388076815.586892"
+         timestampString = "388078117.245063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1188"
-         endingLineNumber = "1188"
+         startingLineNumber = "1209"
+         endingLineNumber = "1209"
          landmarkName = "-rotate:withDegrees:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -112,11 +112,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "388076815.586892"
+         timestampString = "388078117.245063"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "717"
-         endingLineNumber = "717"
+         startingLineNumber = "738"
+         endingLineNumber = "738"
          landmarkName = "-btnColor_Done:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -164,11 +164,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "388076815.586892"
+         timestampString = "388077990.770307"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "123"
-         endingLineNumber = "123"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
          landmarkName = "@implementation ADDRAWViewController"
          landmarkType = "3">
       </FileBreakpoint>
@@ -177,13 +177,39 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMViewController.m"
-         timestampString = "388076887.795365"
+         timestampString = "388077735.044432"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "175"
-         endingLineNumber = "175"
+         startingLineNumber = "181"
+         endingLineNumber = "181"
          landmarkName = "audioVolumeChangeListenerCallback()"
          landmarkType = "7">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SketchPost/ADDRAWViewController.m"
+         timestampString = "388078117.245063"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "189"
+         endingLineNumber = "189"
+         landmarkName = "-showToolbars"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SketchPost/ADDRAWViewController.m"
+         timestampString = "388078117.245063"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "178"
+         endingLineNumber = "178"
+         landmarkName = "-hideToolbars"
+         landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>
