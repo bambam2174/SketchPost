@@ -51,5 +51,6 @@
 -(void)uploadImage:(UIImage *)image;
 -(void)uploadImage:(UIImage *)image delegate:(id<BAMFacebookManagerDelegate>)delegate;
 -(void)publishMessage:(NSString *)message withSource:(NSString *)source withPicture:(NSString *)pic withLink:(NSString *)link toUser:(NSString *)user;
+-(void)foobar;
 
 @end

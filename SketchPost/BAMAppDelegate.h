@@ -18,5 +18,6 @@ extern NSString *const SCSessionStateChangedNotification;
 
 -(void)openReadSession;
 -(void)openPublishSession;
+void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData);
 
 @end

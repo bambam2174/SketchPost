@@ -54,6 +54,28 @@ NSString *const SCSessionStateChangedNotification = @"de.adrodev.kilinc.sketchpo
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     [FBSession.activeSession handleDidBecomeActive];
+    [self handleAudioSession];
+}
+
+-(void)handleAudioSession {
+    AudioSessionInitialize(NULL, NULL, NULL, NULL);
+    AudioSessionSetActive(true);
+    AudioSessionAddPropertyListener(kAudioSessionProperty_CurrentHardwareOutputVolume, audioVolumeChangeListenerCallback, (__bridge void *)(self));
+}
+
+Float32 _currentCount;
+
+void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData) {
+    Float32 newCount = *(Float32 *)inData;
+    NSLog(@"%@", inUserData);
+    NSLog(@"%f", newCount);
+    AudioSessionRemovePropertyListenerWithUserData(kAudioSessionProperty_CurrentHardwareOutputVolume, NULL, NULL);
+    if (newCount > _currentCount) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kHideToolBars object:nil];
+    } else {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kShowToolBars object:nil];
+    }
+    _currentCount = newCount;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

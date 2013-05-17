@@ -179,6 +179,7 @@ static inline double radians (double degrees);
     [UIView animateWithDuration:0.3 animations:^{
         _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, -_topToolBar.bounds.size.height);
         tBar.frame = CGRectOffset(tBar.frame, 0, tBar.bounds.size.height);
+        NSLog(@"Hide\n_topToolBar %@, \ntBar %@", NSStringFromCGRect(_topToolBar.frame), NSStringFromCGRect(tBar.frame));
         _topToolBarVisible = NO;
         _bottomToolBarVisible = NO;
     }];
@@ -190,6 +191,7 @@ static inline double radians (double degrees);
     [UIView animateWithDuration:0.3 animations:^{
         _topToolBar.frame = CGRectOffset(_topToolBar.frame, 0, _topToolBar.bounds.size.height);
         tBar.frame = CGRectOffset(tBar.frame, 0, -tBar.bounds.size.height);
+        NSLog(@"Show\n_topToolBar %@, \ntBar %@", NSStringFromCGRect(_topToolBar.frame), NSStringFromCGRect(tBar.frame));
         _topToolBarVisible = YES;
         _bottomToolBarVisible = YES;
     }];
@@ -283,15 +285,15 @@ static inline double radians (double degrees);
 - (void)setupNavBar {
 //    self.navigationItem.title = @"Sketch it";
     _topToolBar = [[UIView alloc] initWithFrame:CGRectMake(/*self.view.bounds.size.width*/0, -44, self.view.bounds.size.width, 44)];
-    _toolButtons.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    _toolButtons.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     _toolButtons.autoresizesSubviews = YES;
     _topToolBar.backgroundColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:.3];
     [self.view addSubview:_topToolBar];
-    UIButton *btnCancel = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btnCancel.frame = CGRectMake(10, (_topToolBar.bounds.size.height-30)/2, 60, 30);
-    [btnCancel setTitle:@"X" forState:UIControlStateNormal];
-    [btnCancel addTarget:self action:@selector(navBtnBack_Clicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_topToolBar addSubview:btnCancel];
+    _btnCancel = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _btnCancel.frame = CGRectMake(5, (_topToolBar.bounds.size.height-30)/2, 60, 30);
+    [_btnCancel setTitle:@"X" forState:UIControlStateNormal];
+    [_btnCancel addTarget:self action:@selector(navBtnBack_Clicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_topToolBar addSubview:_btnCancel];
 //    UIBarButtonItem *navBarButton = [[UIBarButtonItem alloc] initWithTitle:@"X" style:UIBarButtonItemStyleBordered target:self action:@selector(navBtnBack_Clicked:)];
 //    self.navigationItem.leftBarButtonItem = navBarButton;
     _toolButtons = [[UISegmentedControl alloc] init] ;//WithItems:[NSArray arrayWithObjects:@"Linie", @"Bild laden", @"A", nil]];
@@ -301,20 +303,21 @@ static inline double radians (double degrees);
     [_toolButtons insertSegmentWithImage:[UIImage imageNamed:@"icon_skatch_pic.png"]  atIndex:2 animated:true];
     
 
-    _toolButtons.frame = CGRectMake(73, 7, 180, 30);
+    _toolButtons.frame = CGRectMake((_topToolBar.bounds.size.width-180)/2, (_topToolBar.bounds.size.height-30)/2, 180, 30);
     _toolButtons.segmentedControlStyle = UISegmentedControlStyleBar;
     _toolButtons.selectedSegmentIndex = 0;
 //    [self.navigationController.navigationBar addSubview:toolButtons];
     [_topToolBar addSubview:_toolButtons];
     [_toolButtons addTarget:self action:@selector(segmentControlEvent:) forControlEvents:UIControlEventValueChanged];
     
-    UIButton *btnSave = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    btnSave.frame = CGRectOffset(btnCancel.frame, _topToolBar.bounds.size.width-70, 0);
-    [btnSave setTitle:@"Send" forState:UIControlStateNormal];
-    [btnSave addTarget:self action:@selector(navBtnSave_Clicked:) forControlEvents:UIControlEventTouchUpInside];
-    [_topToolBar addSubview:btnSave];
+    _btnSave = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    _btnSave.tag = 123123;
+    _btnSave.frame = CGRectOffset(_btnCancel.frame, _topToolBar.bounds.size.width-65, 0);
+    [_btnSave setTitle:@"Send" forState:UIControlStateNormal];
+    [_btnSave addTarget:self action:@selector(navBtnSave_Clicked:) forControlEvents:UIControlEventTouchUpInside];
+    [_topToolBar addSubview:_btnSave];
     
-    NSLog(@"btnSave %@, btnCancel %@", NSStringFromCGRect(btnSave.frame), NSStringFromCGRect(btnCancel.frame));
+    NSLog(@"btnSave %@, _btnCancel %@", NSStringFromCGRect(_btnSave.frame), NSStringFromCGRect(_btnCancel.frame));
 //    UIBarButtonItem *saveBarButton = [[UIBarButtonItem alloc] initWithTitle:@"SAVE" style:UIBarButtonItemStyleDone target:self action:@selector(navBtnSave_Clicked:)];
 //    self.navigationItem.rightBarButtonItem = saveBarButton;
     
@@ -529,8 +532,25 @@ static inline double radians (double degrees);
 }
 
 -(void)viewWillLayoutSubviews {
-    _topToolBar.frame = CGRectMake(/*self.view.bounds.size.width*/0, -44, self.view.bounds.size.width, 44);
-    tBar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44);
+    [super viewWillLayoutSubviews];
+    LOG_METHOD2
+    if (_topToolBarVisible || _bottomToolBarVisible) {
+        _topToolBar.frame = CGRectMake(/*self.view.bounds.size.width*/0, -44, self.view.bounds.size.width, 44);
+        tBar.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, 44);
+        _topToolBarVisible = NO;
+        _bottomToolBarVisible = NO;
+    } else {
+        _topToolBar.frame = CGRectMake(/*self.view.bounds.size.width*/0, 0, self.view.bounds.size.width, 44);
+        tBar.frame = CGRectMake(0, self.view.frame.size.height-44, self.view.frame.size.width, 44);
+        _topToolBarVisible = YES;
+        _bottomToolBarVisible = YES;
+    }
+    _toolButtons.frame = CGRectMake((_topToolBar.bounds.size.width-180)/2, (_topToolBar.bounds.size.height-30)/2, 180, 30);
+    _btnSave.frame = CGRectOffset(_btnCancel.frame, _topToolBar.bounds.size.width-65, 0);
+}
+
+-(void)viewDidLayoutSubviews {
+    [super viewDidLayoutSubviews];
 }
 
 -(void)setDeviceOrientation:(UIDeviceOrientation)orientation {

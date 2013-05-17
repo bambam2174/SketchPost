@@ -136,6 +136,8 @@ Float32 _currentCount;
     if (self) {
         // Custom initialization
         _currentCount = .5;
+        //learning blocks
+//        [[BAMFacebookManager shared] foobar];
     }
     return self;
 }
@@ -155,7 +157,7 @@ Float32 _currentCount;
     m_sketchController = [[ADDRAWViewController alloc] init];
     m_sketchController.view.frame = [UIScreen mainScreen].bounds;
     m_sketchController.view.autoresizesSubviews = YES;
-    m_sketchController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
+    //m_sketchController.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     m_sketchController.delegate = self;
 //    [self.navigationController.navigationBar addSubview:[m_sketchController.navigationController.navigationBar.subviews objectAtIndex:0]];
     
@@ -165,16 +167,24 @@ Float32 _currentCount;
     [m_sketchController.view addGestureRecognizer:swipeLeft];
     [self.view addSubview:m_sketchController.view];
     [self setupOtherView];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    /*
     AudioSessionInitialize(NULL, NULL, NULL, NULL);
     AudioSessionSetActive(true);
     AudioSessionAddPropertyListener(kAudioSessionProperty_CurrentHardwareOutputVolume, audioVolumeChangeListenerCallback, (__bridge void *)(self));
+    */
 }
 
 -(void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     [self flipToOtherView:nil];
 }
 
-
+/*
 void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData) {
     Float32 newCount = *(Float32 *)inData;
     NSLog(@"%@", inUserData);
@@ -187,6 +197,7 @@ void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID 
     }
     _currentCount = newCount;
 }
+*/
 
 -(void)flipToOtherView:(id)sender {
     [UIView beginAnimations:nil context:NULL];

@@ -51,6 +51,6 @@
     UIView *_graySheet;
 }
 
-void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData);
+//void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID inID, UInt32 inDataSize, const void *inData);
 
 @end

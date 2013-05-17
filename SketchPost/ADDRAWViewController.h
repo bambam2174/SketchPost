@@ -63,6 +63,8 @@
     UIView *_graySheet;
     BOOL _topToolBarVisible;
     BOOL _bottomToolBarVisible;
+    UIButton *_btnSave;
+    UIButton *_btnCancel;
 }
 
 

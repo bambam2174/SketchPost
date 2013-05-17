@@ -57,9 +57,67 @@ static BAMFacebookManager *sharedMgrInstance = nil;
                 if ([_delegate respondsToSelector:@selector(userDetailsFetched:)])
                     [_delegate userDetailsFetched:_user];
                 
+            } else {
+                NSLog(@"error.localizedDescription %@", error.localizedDescription);
             }
         }];
     }
+}
+
+int (^MyBlock)(int) = ^(int num) {
+    return num * 3;
+};
+
+int (^CompletionHandler)(NSArray*,NSError*) = ^(NSArray *arr, NSError *err) {
+    return 1;
+};
+
+typedef NSUInteger(^MyCompletionHandler)(NSArray*,NSInteger);
+
+MyCompletionHandler cHandler = ^(NSArray *arr, NSInteger xx) {
+    NSLog(@"arr %@, xx %d", arr, xx);
+    xx = 20;
+    return arr.count;
+};
+
+-(void)doStuff:(void (^)(NSArray *array, bool done))handler {
+    handler([NSArray arrayWithObject:@"fsfdf"], true);
+    
+}
+
+-(void)foobar {
+    int a = MyBlock(3);
+    NSLog(@"%d", a);
+    [self blablubb:^int(int num) {
+        NSLog(@"num %d", num);
+        return 10;
+    }];
+    __block NSArray *ggg;
+    [self fuzzy:@"dings" withInt:12 completionHandler:^(NSArray *array, int x) {
+        NSLog(@"watch %@ & %d", array, x);
+        ggg = array;
+    }];
+    NSInteger xx = 2;
+    NSUInteger ret;
+    ret = cHandler(ggg, xx);
+    NSLog(@"xx %d, ret %d", xx, ret);
+}
+
+-(void)blablubb:(int (^)(int num))xxx {
+    int x = xxx(3);
+    NSLog(@"x = %d", x);
+}
+
+-(void)fuzzy:(NSString *)szBums withInt:(NSInteger)intZahl completionHandler:(void(^)(NSArray *array, int x))onComplete {
+    NSLog(@"szBums %@", szBums);
+    NSLog(@"intZahl %d", intZahl);
+    NSArray *arr = [NSArray arrayWithObjects:@"eins", @"zwei", @"drei", nil];
+    int i = arr.count;
+    onComplete(arr, i);
+}
+
+-(void)dizzy:(void (^)(NSArray *arr, NSError *err))ccc {
+    
 }
 
 #pragma mark - Fetch FBGraphUser values
