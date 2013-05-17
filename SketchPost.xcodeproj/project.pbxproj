@@ -108,7 +108,7 @@
 		408A332116E652AD00367735 /* ADDRAWViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADDRAWViewController.h; sourceTree = "<group>"; };
 		408A332216E652AD00367735 /* ADDRAWViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADDRAWViewController.m; sourceTree = "<group>"; };
 		408A332316E652AD00367735 /* BAMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BAMViewController.h; sourceTree = "<group>"; };
-		408A332416E652AD00367735 /* BAMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAMViewController.m; sourceTree = "<group>"; };
+		408A332416E652AD00367735 /* BAMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BAMViewController.m; sourceTree = "<group>"; usesTabs = 0; };
 		408A332516E652AD00367735 /* icon_skatch_color@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_color@2x.png"; sourceTree = "<group>"; };
 		408A332616E652AD00367735 /* icon_skatch_intensity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_intensity@2x.png"; sourceTree = "<group>"; };
 		408A332716E652AD00367735 /* icon_skatch_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_skatch_line@2x.png"; sourceTree = "<group>"; };
