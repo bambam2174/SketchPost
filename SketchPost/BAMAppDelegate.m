@@ -111,6 +111,7 @@ void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID 
  sourceApplication:(NSString *)sourceApplication
         annotation:(id)annotation
 {
+    LOG_METHOD
     return [FBSession.activeSession handleOpenURL:url];
 }
 
@@ -118,6 +119,7 @@ void audioVolumeChangeListenerCallback(void *inUserData, AudioSessionPropertyID 
                      state:(FBSessionState)state
                      error:(NSError *)error
 {
+    LOG_METHOD
     switch (state) {
         case FBSessionStateOpen:
             {

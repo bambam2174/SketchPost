@@ -8,12 +8,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/BAMLoginController.m"
-         timestampString = "384270256.73284"
+         timestampString = "395172166.362493"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "67"
          endingLineNumber = "67"
-         landmarkName = "-textFieldShouldReturn:"
+         landmarkName = "-viewDidLoad"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -26,7 +26,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "125"
          endingLineNumber = "125"
-         landmarkName = "-openReadSession"
+         landmarkName = "-sessionStateChanged:state:error:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -39,8 +39,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "40"
          endingLineNumber = "40"
-         landmarkName = "-friendsPickerController"
-         landmarkType = "5">
+         landmarkName = "@interface BAMFacebookManager(private)"
+         landmarkType = "2">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -52,7 +52,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "174"
          endingLineNumber = "174"
-         landmarkName = "-friendPickerViewControllerSelectionDidChange:"
+         landmarkName = "-getUserEducation"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -65,7 +65,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "232"
          endingLineNumber = "232"
-         landmarkName = "-setupOtherView"
+         landmarkName = "-flipToOtherView:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -78,7 +78,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "214"
          endingLineNumber = "214"
-         landmarkName = "-cls"
+         landmarkName = "-showToolbars"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -86,12 +86,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "390442967.568027"
+         timestampString = "393327801.861542"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "1229"
-         endingLineNumber = "1229"
-         landmarkName = "-rotate:withDegrees:"
+         startingLineNumber = "1231"
+         endingLineNumber = "1231"
+         landmarkName = "-alertView:clickedButtonAtIndex:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -104,7 +104,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "185"
          endingLineNumber = "185"
-         landmarkName = "-facebookViewControllerCancelWasPressed:"
+         landmarkName = "-getFavouriteAthletes"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -112,12 +112,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "SketchPost/ADDRAWViewController.m"
-         timestampString = "390442967.568027"
+         timestampString = "393327801.861542"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "758"
-         endingLineNumber = "758"
-         landmarkName = "-btnColor_Done:"
+         startingLineNumber = "759"
+         endingLineNumber = "759"
+         landmarkName = "-btnColor_Picked:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -130,7 +130,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "290"
          endingLineNumber = "290"
-         landmarkName = "-closeMessage:"
+         landmarkName = "-publishMessage:withSource:withPicture:withLink:toUser:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -143,7 +143,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "285"
          endingLineNumber = "285"
-         landmarkName = "-didPresentAlertView:"
+         landmarkName = "-publishMessage:withSource:withPicture:withLink:toUser:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -156,7 +156,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "259"
          endingLineNumber = "259"
-         landmarkName = "-publishMessage:withSource:withPicture:withLink:toUser:"
+         landmarkName = "-uploadImage:delegate:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -169,8 +169,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "128"
          endingLineNumber = "128"
-         landmarkName = "@implementation ADDRAWViewController"
-         landmarkType = "3">
+         landmarkName = "-loadView"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -182,7 +182,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "251"
          endingLineNumber = "251"
-         landmarkName = "-swipe_Gest:"
+         landmarkName = "-setupOtherView"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -195,8 +195,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "52"
          endingLineNumber = "52"
-         landmarkName = "-getUserDetails"
-         landmarkType = "5">
+         landmarkName = "@implementation BAMFacebookManager"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -208,7 +208,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "55"
          endingLineNumber = "55"
-         landmarkName = "-getUserDetails"
+         landmarkName = "+shared"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -221,8 +221,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "189"
          endingLineNumber = "189"
-         landmarkName = "-showToolbars"
-         landmarkType = "5">
+         landmarkName = "@implementation ADDRAWViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -234,8 +234,8 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "177"
          endingLineNumber = "177"
-         landmarkName = "-hideToolbars"
-         landmarkType = "5">
+         landmarkName = "@implementation ADDRAWViewController"
+         landmarkType = "3">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
@@ -247,7 +247,20 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "89"
          endingLineNumber = "89"
-         landmarkName = "-foobar"
+         landmarkName = "@implementation BAMFacebookManager"
+         landmarkType = "3">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SketchPost/BAMAppDelegate.m"
+         timestampString = "391351943.337113"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "121"
+         endingLineNumber = "121"
+         landmarkName = "-sessionStateChanged:state:error:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

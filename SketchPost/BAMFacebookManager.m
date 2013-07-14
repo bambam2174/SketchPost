@@ -124,6 +124,10 @@ MyCompletionHandler cHandler = ^(NSArray *arr, NSInteger xx) {
     NSUInteger ret;
     ret = cHandler(ggg, xx);
     NSLog(@"xx %d, ret %d", xx, ret);
+    
+//    [self bussy:^NSUInteger(NSArray *, NSInteger) {
+//        NSLog(@"");
+//    }];
 }
 
 -(void)blablubb:(int (^)(int num))xxx {
@@ -141,6 +145,13 @@ MyCompletionHandler cHandler = ^(NSArray *arr, NSInteger xx) {
 
 -(void)dizzy:(void (^)(NSArray *arr, NSError *err))ccc {
     
+}
+
+-(void)bussy:(MyCompletionHandler)x {
+    NSArray *arr = [NSArray arrayWithObjects:@"eins", @"zwei", @"drei", nil];
+    int i = arr.count;
+    NSUInteger bla = x(arr, i);
+    NSLog(@"bla %d", bla);
 }
 
 #pragma mark - Fetch FBGraphUser values

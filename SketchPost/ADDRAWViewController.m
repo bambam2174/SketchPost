@@ -95,7 +95,7 @@ static inline double radians (double degrees);
         blue = 0.0;
         alpha = 1.0;
         drawText = NO;
-        overlayFont = nil;
+        overlayFont = [UIFont systemFontOfSize:14];
         canvas2Top = NO;
         vOffset = 0.0;
         _topToolBarVisible = NO;
@@ -621,6 +621,7 @@ static inline double radians (double degrees);
     UISlider *tmpSlider = (UISlider *)sender;
     SKLog(@"%@ in %@ sender.value %f", NSStringFromSelector(_cmd), NSStringFromClass([self class]), tmpSlider.value);
     _radius = tmpSlider.value;
+    overlayFont = [UIFont systemFontOfSize:_radius*2];
     [_lblAnzeige setText:[NSString stringWithFormat:@"%.1f", _radius]];
 }
 
@@ -863,7 +864,7 @@ static inline double radians (double degrees);
     [textField resignFirstResponder];
     
     [_toolButtons setSelectedSegmentIndex:0];
-    
+    drawText = NO;
     if (canvas2Top) {
         [UIView beginAnimations:nil context:NULL];
         [UIView setAnimationDuration:0.5];
@@ -1055,15 +1056,16 @@ static inline double radians (double degrees);
             [tfOverlayText removeFromSuperview];
             tfOverlayText = nil;
         }
-        
-        tfOverlayText = [[UITextField alloc] initWithFrame:CGRectMake(lastPoint.x, lastPoint.y, 150, 20)];
+        CGFloat tfHeight = (3*_radius> 20.0) ? 3.0*_radius: 20.0;
+        tfOverlayText = [[UITextField alloc] initWithFrame:CGRectMake(lastPoint.x, lastPoint.y, 150, tfHeight)];
         [tfOverlayText setBackgroundColor:[UIColor clearColor]];
         tfOverlayText.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
         tfOverlayText.delegate = self;
         [tfOverlayText setBorderStyle:UITextBorderStyleLine];
         [tmpImgVw addSubview:tfOverlayText];
         [tfOverlayText becomeFirstResponder];
-        overlayFont = tfOverlayText.font;
+        tfOverlayText.font = overlayFont;
+//        overlayFont = tfOverlayText.font;
         if (lastPoint.y > 160.0) {
             [UIView beginAnimations:nil context:NULL];
             [UIView setAnimationDuration:0.5];
